@@ -98,3 +98,13 @@
 </body>
 
 </html>
+
+
+struc of blog site: 
+
+<div class="post" data-tags="astrobiology" data-date="2025-03-18">
+    <h3><a href="post2.html">Title of Blog Post 2</a></h3>
+    <p class="date">Published on: March 18, 2025</p>
+    <p>Short description of blog post 2. Exploring the potential for microbial life on Mars.</p>
+    <p class="tags">Tags: Astrobiology</p>
+</div>

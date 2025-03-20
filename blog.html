@@ -45,6 +45,19 @@
         }
     </style>
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let postsContainer = document.getElementById("posts-container");
+            let posts = Array.from(document.querySelectorAll(".post"));
+            
+            posts.sort((a, b) => {
+                let dateA = new Date(a.dataset.date);
+                let dateB = new Date(b.dataset.date);
+                return dateB - dateA;
+            });
+            
+            posts.forEach(post => postsContainer.appendChild(post));
+        });
+
         function filterByTag(tag) {
             let posts = document.querySelectorAll('.post');
             posts.forEach(post => {
@@ -57,44 +70,43 @@
         }
     </script>
 </head>
+
 <body>
     <h1>Blog</h1>
-    
-    <hr>
 
+    <hr>
+    
     <p>Filter by tag: 
         <a href="#" onclick="filterByTag('all')">All</a> | 
         <a href="#" onclick="filterByTag('science')">Science</a> | 
         <a href="#" onclick="filterByTag('astrobiology')">Astrobiology</a> | 
-        <a href="#" onclick="filterByTag('biotech')">Biotech</a>
+        <a href="#" onclick="filterByTag('biology')">Biology</a> |
+        <a href="#" onclick="filterByTag('geology')">Geology</a>
     </p>
+
+    <hr>
     
+    <div id="posts-container">
+        
+        <div class="post" data-tags="science" data-date="2024-08-19">
+            <h3><a href="post2.html">S1. Dyson Sphere</a></h3>
+            <p class="date">Published on: Aug 18, 2024</p>
+            <p>Short introduction to Dyson Sphere.</p>
+            <p class="tags">Tags: Science</p>
+        </div>
+        
+        <div class="post" data-tags="astrobiology biology" data-date="2024-08-18">
+            <h3><a href="post3.html">A1. Astrobiology</a></h3>
+            <p class="date">Published on: Aug 18, 2024</p>
+            <p>Short introduction to Astrobiology.</p>
+            <p class="tags">Tags: Astrobiology</p>
+        </div>
+    </div>
+
+
     <hr>
 
-    <div class="post" data-tags="science biotech">
-        <h3><a href="blog/post1.html">Title of Blog Post 1</a></h3>
-        <p class="date">Published on: March 19, 2025</p>
-        <p>Short description of blog post 1. This post discusses recent advancements in biotechnology.</p>
-        <p class="tags">Tags: Science, Biotech</p>
-    </div>
-    
-    <div class="post" data-tags="astrobiology">
-        <h3><a href="blog/post2.html">Title of Blog Post 2</a></h3>
-        <p class="date">Published on: March 18, 2025</p>
-        <p>Short description of blog post 2. Exploring the potential for microbial life on Mars.</p>
-        <p class="tags">Tags: Astrobiology</p>
-    </div>
-    
-    <div class="post" data-tags="science">
-        <h3><a href="blog/post3.html">Title of Blog Post 3</a></h3>
-        <p class="date">Published on: March 17, 2025</p>
-        <p>Short description of blog post 3. The role of microbiology in modern medicine.</p>
-        <p class="tags">Tags: Science</p>
-    </div>
-    
-<hr>
-
-<small><i> (Last updated 2025 Mar 19) </i></small>
+    <small><i> (Last updated 2025 Mar 20) </i></small>
 
 </body>
 </html>
