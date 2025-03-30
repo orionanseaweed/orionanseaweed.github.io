@@ -1,20 +1,62 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Xuan Tung Hoang</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Xuan Tung Hoang</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="icon" type="png" href="figures/logo-and-ref-img/Stone-MinecraftWiki.png">
+    <link rel="icon" type="image/png" href="figures/logo-and-ref-img/Stone-MinecraftWiki.png">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0px auto;
-            padding: 10px;
-            max-width: 800px;
+        .title {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #002147;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            font-size: 1.2em;
+            color: #555;
+            text-align: center;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        .content {
+            text-align: justify;
+            font-size: 0.95em;
             line-height: 1.6;
-            color: #000;
-            background-color: #fff;
+            margin-top: 8px;
+            margin-bottom: 10px;
+        }
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 15px;
+            background: white;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 6px;
+        }
+        .profile-container {
+            float: right;
+            margin-left: 70px;
+            text-align: center;
+            max-width: 230px;
+        }
+        .profile-pic {
+            float: right;
+            margin-left: 15px;
+            border-radius: 5px;
+            max-width: 258px;
+            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 8px;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #007bff;
+            display: inline-block;
         }
         h1 {
             margin-top: 5px; /* Giảm khoảng cách trên của tiêu đề */
@@ -36,16 +78,184 @@
             font-size: 0.9em;
             line-height: 1.6;
         }
+        /* modify links */
         a {
-            text-decoration: none;
             color: #000;
+            text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
         a:visited {
             color: #000;
         }
+
+        /* Reset & Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.5;
+            font-size: 14px;
+            padding-top: 50px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #002147;
+            color: white;
+            padding: 9px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .navbar .logo {
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            font-size: 0.9em;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 6px 0;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* hide menu in desktop */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        /* social links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .social-links a:hover {
+            background-color: #0056b3;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            font-size: 0.9em;
+            font-weight: 500;
+            text-decoration: none;
+            color: white;
+            border-radius: 20px;
+            transition: all 0.3s ease-in-out;
+            border: none;
+        }
+
+        /* modify button colors */
+        .social-links a.linkedin {
+            background-color: #0077b5;
+        }
+
+        .social-links a.github {
+            background-color: #333;
+        }
+
+        .social-links a.flickr {
+            background-color: #ff0084;
+        }
+
+        /* hover */
+        .social-links a:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        /* smaller icon */
+        .social-links i {
+            font-size: 1.1em;
+        }
+
+
+        /* sections */
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-top: 10px;
+            margin-bottom: 4px;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #007bff;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 8px 12px;
+            }
+
+            .menu-toggle {
+                padding: 9px 12px;
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+                width: 100%;
+                background-color: #002147;
+                padding-top: 10px;
+                position: absolute;
+                top: 100%;
+                left: 0;
+            }
+
+            .nav-links a {
+                padding: 8px 12px;
+                width: 100%;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            /* Ẩn ảnh profile trên màn hình nhỏ */
+            .profile-container {
+                display: none;
+            }
+        }
+
         .post {
             margin-bottom: 20px;
         }
@@ -54,69 +264,87 @@
             color: #555;
         }
     </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let postsContainer = document.getElementById("posts-container");
-            let posts = Array.from(document.querySelectorAll(".post"));
-            
-            posts.sort((a, b) => {
-                let dateA = new Date(a.dataset.date);
-                let dateB = new Date(b.dataset.date);
-                return dateB - dateA;
-            });
-            
-            posts.forEach(post => postsContainer.appendChild(post));
-        });
 
-        function filterByTag(tag) {
-            let posts = document.querySelectorAll('.post');
-            posts.forEach(post => {
-                if (tag === 'all' || post.dataset.tags.includes(tag)) {
-                    post.style.display = 'block';
-                } else {
-                    post.style.display = 'none';
-                }
-            });
-        }
-    </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let postsContainer = document.getElementById("posts-container");
+        let posts = Array.from(document.querySelectorAll(".post"));
+        
+        posts.sort((a, b) => {
+            let dateA = new Date(a.dataset.date);
+            let dateB = new Date(b.dataset.date);
+            return dateB - dateA;
+        });
+        
+        posts.forEach(post => postsContainer.appendChild(post));
+    });
+
+    function filterByTag(tag) {
+        let posts = document.querySelectorAll('.post');
+        posts.forEach(post => {
+            if (tag === 'all' || post.dataset.tags.includes(tag)) {
+                post.style.display = 'block';
+            } else {
+                post.style.display = 'none';
+            }
+        });
+    }
+</script>
+
 </head>
 
 <body>
-    <h1>Blog</h1>
 
-    <hr>
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="logo">Xuan Tung Hoang</div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <div class="nav-links">
+        <a href="blog.html">Blog</a>
+        <a href="extendedcv.html">Extended Vita</a>
+        <a href="projects.html">Resources</a>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container">
+
+<!-- Title -->
+<h1 class="title" style="text-align: left; margin-left: 0;">Blog</h1>
+
+<hr>
+
+<p>Filter by tag: 
+    <a href="#" onclick="filterByTag('all')">All</a> | 
+    <a href="#" onclick="filterByTag('science')">Science</a> | 
+    <a href="#" onclick="filterByTag('astrobiology')">Astrobiology</a> | 
+    <a href="#" onclick="filterByTag('biology')">Biology</a> |
+    <a href="#" onclick="filterByTag('geology')">Geology</a>
+</p>
+
+<hr>
+
+<div id="posts-container">
     
-    <p>Filter by tag: 
-        <a href="#" onclick="filterByTag('all')">All</a> | 
-        <a href="#" onclick="filterByTag('science')">Science</a> | 
-        <a href="#" onclick="filterByTag('astrobiology')">Astrobiology</a> | 
-        <a href="#" onclick="filterByTag('biology')">Biology</a> |
-        <a href="#" onclick="filterByTag('geology')">Geology</a>
-    </p>
-
-    <hr>
-    
-    <div id="posts-container">
-        
-        <div class="post" data-tags="science" data-date="2024-08-19">
-            <h3><a href="blog/p2-s1-dyson-sphere.html">S1. Dyson Sphere</a></h3>
-            <p class="date">Published on: Aug 18, 2024</p>
-            <p>Short introduction to Dyson Sphere.</p>
-            <p class="tags">Tags: Science</p>
-        </div>
-
-        <div class="post" data-tags="astrobiology biology" data-date="2024-08-18">
-            <h3><a href="blog/p1-a1-astrobiology.html">A1. Astrobiology</a></h3>
-            <p class="date">Published on: Aug 18, 2024</p>
-            <p>Short introduction to Astrobiology.</p>
-            <p class="tags">Tags: Astrobiology</p>
-        </div>
+    <div class="post" data-tags="science" data-date="2024-08-19">
+        <h3><a href="blog/p2-s1-dyson-sphere.html">S1. Dyson Sphere</a></h3>
+        <p class="date">Published on: Aug 18, 2024</p>
+        <p>Short introduction to Dyson Sphere.</p>
+        <p class="tags">Tags: Science</p>
     </div>
 
+    <div class="post" data-tags="astrobiology biology" data-date="2024-08-18">
+        <h3><a href="blog/p1-a1-astrobiology.html">A1. Astrobiology</a></h3>
+        <p class="date">Published on: Aug 18, 2024</p>
+        <p>Short introduction to Astrobiology.</p>
+        <p class="tags">Tags: Astrobiology</p>
+    </div>
+</div>
 
-    <hr>
 
-    <small><i> (Last updated 2025 Mar 20) </i></small>
+<hr>
 
 </body>
 </html>
