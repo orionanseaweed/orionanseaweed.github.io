@@ -7,41 +7,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="figures/logo-and-ref-img/Stone-MinecraftWiki.png">
     <style>
-        /* container */
-        .container {
-            max-width: 750px; /* Thu gọn khung nội dung */
-            margin: 70px auto 50px; /* Căn giữa & tạo khoảng cách với navbar */
-            padding: 20px;
-            background: white;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.08);
-            border-radius: 5px;
-        }
-
-        /* title */
+        /* title & subtitle */
         .title {
-            font-size: 2.4em;
+            font-size: 2.2em;
             font-weight: 700;
             color: #002147;
-            text-align: left;
-            margin-bottom: 5px;
+            text-align: center;
+            margin-bottom: 8px;
         }
-
-        /* subtitle */
         .subtitle {
             font-size: 1.2em;
             color: #555;
-            text-align: left;
+            text-align: center;
             font-weight: 500;
-            margin-bottom: 20px;
-        }
-
-        /* main content */
-        .content {
-            font-size: 1em;
-            line-height: 1.7;
-            text-align: justify;
-            color: #333;
             margin-bottom: 15px;
+        }
+        /* content */
+        .content {
+            text-align: justify;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-top: 8px;
+            margin-bottom: 10px;
         }
         .profile-container {
             float: right;
@@ -149,23 +136,6 @@
             border-radius: 6px;
         }
 
-        /* title & subtitle */
-        .title {
-            font-size: 2.2em;
-            font-weight: 700;
-            color: #002147;
-            text-align: center;
-            margin-bottom: 8px;
-        }
-
-        .subtitle {
-            font-size: 1.2em;
-            color: #555;
-            text-align: center;
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-
         /* social links */
         .social-links {
             display: flex;
@@ -228,14 +198,6 @@
             display: inline-block;
         }
 
-        .content {
-            text-align: justify;
-            font-size: 0.95em;
-            line-height: 1.6;
-            margin-top: 8px;
-            margin-bottom: 10px;
-        }
-
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
@@ -246,8 +208,6 @@
             .menu-toggle {
                 display: block;
                 position: absolute;
-                top: 10px;
-                right: 15px;
             }
 
             .nav-links {
