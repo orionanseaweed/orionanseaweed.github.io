@@ -59,7 +59,7 @@
             display: inline-block;
         }
         h1 {
-            margin-top: 5px; /* Giảm khoảng cách trên của tiêu đề */
+            margin-top: 5px;
             font-size: 2em;
             margin-bottom: 5px;
         }
@@ -75,7 +75,7 @@
         p {
             margin-top: 10px;
             margin-bottom: 10px;
-            font-size: 0.9em;
+            font-size: 0.95em;
             line-height: 1.6;
         }
         /* modify links */
@@ -190,14 +190,10 @@
         .social-links a.flickr {
             background-color: #ff0084;
         }
-
-        /* hover */
         .social-links a:hover {
             transform: translateY(-2px);
             opacity: 0.9;
         }
-
-        /* smaller icon */
         .social-links i {
             font-size: 1.1em;
         }
@@ -324,38 +320,21 @@
 <div class="container">
 
 <!-- Title -->
-<h1 class="title" style="text-align: left; margin-left: 0;">Blog</h1>
+<h1 class="title" style="text-align: left; margin-left: 0;">Resources</h1>
 
 <hr>
 
-<p>Filter by tag: 
-    <a href="#" onclick="filterByTag('all')">All</a> | 
-    <a href="#" onclick="filterByTag('science')">Science</a> | 
-    <a href="#" onclick="filterByTag('astrobiology')">Astrobiology</a> | 
-    <a href="#" onclick="filterByTag('biology')">Biology</a> |
-    <a href="#" onclick="filterByTag('geology')">Geology</a>
-</p>
+    <p>
+        Take a look at some fascinating and valuable communities, channels & textbooks I've discovered through my experience: <br>
+        <a href="/resources/bio-list.html" target="_blank" rel="noopener noopener">Biology</a> |
+        <a href="/resources/geo-list.html" target="_blank" rel="noopener noopener">Geology</a> |
+        <a href="/resources/phys-list.html" target="_blank" rel="noopener noopener">Physics</a> |
+        <a href="/resources/data-science.html" target="_blank" rel="noopener noopener">Data Science</a>
+        <!-- | <a href="/resources/gen-sci-list.html" target="_blank" rel="noopener noopener">General Science</a>. -->
+    </p>
 
-<hr>
-
-<div id="posts-container">
-    
-    <div class="post" data-tags="science" data-date="2024-08-19">
-        <h3><a href="blog/p2-s1-dyson-sphere.html">S1. Dyson Sphere</a></h3>
-        <p class="date">Published on: Aug 18, 2024</p>
-        <p>Short introduction to Dyson Sphere.</p>
-        <p class="tags">Tags: Science</p>
-    </div>
-
-    <div class="post" data-tags="astrobiology biology" data-date="2024-08-18">
-        <h3><a href="blog/p1-a1-astrobiology.html">A1. Astrobiology</a></h3>
-        <p class="date">Published on: Aug 18, 2024</p>
-        <p>Short introduction to Astrobiology.</p>
-        <p class="tags">Tags: Astrobiology</p>
-    </div>
 </div>
 
-<hr>
-
 </body>
+
 </html>

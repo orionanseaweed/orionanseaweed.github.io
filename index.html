@@ -240,6 +240,18 @@
         }
 
     </style>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.querySelector(".nav-links");
+            if (menu.style.display === "flex") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "flex";
+            }
+        }
+    </script>
+
 </head>
 
 <body>
@@ -254,7 +266,7 @@
             <a href="index.html">About</a>
             <a href="blog.html">Blog</a>
             <a href="extendedcv.html">Extended Vita</a>
-            <a href="projects.html">Resources</a>
+            <a href="resources.html">Resources</a>
         </div>
     </nav>
 
@@ -302,7 +314,7 @@
     <h2 class="section-title">Miscellaneous</h2>
     <p class="content">
         In my spare time, I commonly write blogs, immerse myself in books or play badminton,
-    when I need to contemplate deeply on something, I prefer to go <a href="/figures/my_fig/trekking_with_friends.jpg" alt="Trekking Ham Lon mountain with Thanh Tung, Kim Chi & Minh Hong" target="_blank" rel="noopener noreferrer">trekking</a>.
+        when I need to contemplate deeply on something, I prefer to go <a href="/figures/my_fig/trekking_with_friends.jpg" alt="Trekking Ham Lon mountain with Thanh Tung, Kim Chi & Minh Hong" target="_blank" rel="noopener noreferrer">trekking</a>.
     </p>
 
     <p class="content">
@@ -313,17 +325,6 @@
     </p>
 
 </div>
-
-<script>
-    function toggleMenu() {
-        var menu = document.querySelector(".nav-links");
-        if (menu.style.display === "flex") {
-            menu.style.display = "none";
-        } else {
-            menu.style.display = "flex";
-        }
-    }
-</script>
 
 </body>
 </html>
