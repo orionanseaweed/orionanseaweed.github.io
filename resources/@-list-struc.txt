@@ -7,238 +7,60 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="figures/logo-and-ref-img/Stone-MinecraftWiki.png">
     <style>
-        /* title & subtitle */
-        .title {
-            font-size: 2.2em;
-            font-weight: 700;
-            color: #002147;
-            text-align: center;
-            margin-bottom: 8px;
-        }
-        .subtitle {
-            font-size: 1.2em;
-            color: #555;
-            text-align: center;
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-        /* content */
-        .content {
-            text-align: justify;
-            font-size: 0.95em;
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0px auto;
+            padding: 10px;
+            max-width: 1350px;
             line-height: 1.6;
-            margin-top: 8px;
+            color: #000;
+            background-color: #fff;
+        }
+        h1 {
+            margin-top: 5px; /* Giảm khoảng cách trên của tiêu đề */
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+        h2 {
+            margin-top: 5px;
             margin-bottom: 10px;
+            font-size: 1.5em;
         }
-        /* Container */
-        .container {
-            max-width: 850px;
-            margin: 30px auto;
-            padding: 15px;
-            background: white;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 6px;
-        }
-        .profile-container {
-            float: right;
-            margin-left: 70px;
-            text-align: center;
-            max-width: 230px;
-        }
-        .profile-pic {
-            float: right;
-            margin-left: 15px;
-            border-radius: 5px;
-            max-width: 258px;
-            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* modify section titles */
-        .section-title {
-            font-size: 1.4em;
-            font-weight: 600;
-            margin-top: 15px;
-            margin-bottom: 0px;
-            display: inline-block;
+        h3 {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-size: 1.25em;
         }
         h4 {
             margin-top: 5px;
             margin-bottom: 5px;
+            font-size: 1em;
         }
-
-        /* modify links */
+        p {
+            margin-top: 5px;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
         a {
-            color: #007bff;
             text-decoration: none;
         }
-
         a:hover {
             text-decoration: underline;
         }
-        a:visited {
-            color: #007bff;
+        a:visited{
+            color: blue;
         }
-
-        /* reset & global styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.5;
-            font-size: 14px;
-            padding-top: 50px;
-        }
-
-        /* Navbar */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #002147;
-            color: white;
-            padding: 9px 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-        }
-
-        .navbar .logo {
-            font-size: 1.2em;
-            font-weight: 700;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .nav-links a {
-            color: white;
-            font-size: 0.9em;
-            font-weight: 500;
-            text-decoration: none;
-            padding: 6px 0;
-            transition: opacity 0.3s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.7;
-        }
-
-        /* hide menu in desktop */
-        .menu-toggle {
-            display: none;
-            font-size: 1.5em;
-            cursor: pointer;
-        }
-
-        /* social links */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .social-links a:hover {
-            background-color: #0056b3;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 14px;
-            font-size: 0.9em;
-            font-weight: 500;
-            text-decoration: none;
-            color: white;
-            border-radius: 20px;
-            transition: all 0.3s ease-in-out;
-            border: none;
-        }
-
-        /* modify button colors */
-        .social-links a.linkedin {
-            background-color: #0077b5;
-        }
-
-        .social-links a.github {
-            background-color: #333;
-        }
-
-        .social-links a.flickr {
-            background-color: #ff0084;
-        }
-
-        /* hover */
-        .social-links a:hover {
-            transform: translateY(-2px);
-            opacity: 0.9;
-        }
-
-        /* smaller icon */
-        .social-links i {
-            font-size: 1.1em;
-        }
-
-        @media (max-width: 768px) {
-
-            .navbar {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                padding: 8px 12px;
-            }
-
-            .menu-toggle {
-                padding: 9px 12px;
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 6px;
-                width: 100%;
-                background-color: #002147;
-                padding-top: 10px;
-                position: absolute;
-                top: 100%;
-                left: 0;
-            }
-
-            .nav-links a {
-                padding: 8px 12px;
-                width: 100%;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            /* Ẩn ảnh profile trên màn hình nhỏ */
-            .profile-container {
-                display: none;
-            }
-        }
-
         ul li {
             margin-top: 5px;
             margin-bottom: 5px;
-            margin-left: 30px;
-            line-height: 1.6;
+            line-height: 1.2;
+            font-size: 0.9em;
         }
-
+        u {    
+            border-bottom: 1.5px dotted #000;
+            text-decoration: none;
+        }
     </style>
 
     <script>
