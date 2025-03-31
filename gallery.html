@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Xuan Tung Hoang</title>
+    <title>Gallery — Xuan Tung Hoang</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="figures/logo-and-ref-img/Stone-MinecraftWiki.png">
     <style>
-        /* title & subtitle */
         .title {
             font-size: 2.2em;
             font-weight: 700;
@@ -22,7 +21,6 @@
             font-weight: 500;
             margin-bottom: 15px;
         }
-        /* content */
         .content {
             text-align: justify;
             font-size: 0.95em;
@@ -30,9 +28,8 @@
             margin-top: 8px;
             margin-bottom: 10px;
         }
-        /* Container */
         .container {
-            max-width: 850px;
+            max-width: 1200px;
             margin: 30px auto;
             padding: 15px;
             background: white;
@@ -52,17 +49,41 @@
             max-width: 258px;
             box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
         }
-        /* modify section titles */
         .section-title {
             font-size: 1.4em;
             font-weight: 600;
-            margin-top: 15px;
+            margin-top: 25px;
             margin-bottom: 8px;
-            padding-bottom: 0px;
+            padding-bottom: 4px;
             border-bottom: 2px solid #007bff;
             display: inline-block;
         }
-
+        h1 {
+            margin-top: 5px; /* Giảm khoảng cách trên của tiêu đề */
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+        h2 {
+            margin-top: 5px;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+        h3 {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-size: 1.25em;
+        }
+        h4 {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            font-size: 1em;
+        }
+        p {
+            margin-top: 5px;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
         /* modify links */
         a {
             color: #007bff;
@@ -76,7 +97,7 @@
             color: #007bff;
         }
 
-        /* reset & global styles */
+        /* Reset & Global Styles */
         * {
             margin: 0;
             padding: 0;
@@ -175,22 +196,29 @@
         .social-links a.flickr {
             background-color: #ff0084;
         }
-
-        /* hover */
         .social-links a:hover {
             transform: translateY(-2px);
             opacity: 0.9;
         }
-
-        /* smaller icon */
         .social-links i {
             font-size: 1.1em;
+        }
+
+
+        /* sections */
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-top: 10px;
+            margin-bottom: 4px;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #007bff;
+            display: inline-block;
         }
 
         @media (max-width: 768px) {
 
             .navbar {
-                display: flex;
                 flex-direction: row;
                 justify-content: space-between;
                 align-items: center;
@@ -198,9 +226,8 @@
             }
 
             .menu-toggle {
-                padding: 8px 12px;
-                display: flex;
-                align-self: center;
+                padding: 9px 12px;
+                display: block;
             }
 
             .nav-links {
@@ -231,94 +258,126 @@
             }
         }
 
+        .post {
+            margin-bottom: 20px;
+        }
+        .tags, .date {
+            font-size: 0.85em;
+            color: #555;
+        }
+        * {
+            box-sizing: border-box;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        /* Create three equal columns that sits next to each other */
+        .column {
+            flex: 33.33%;
+            padding: 5px;
+        }
     </style>
 
-    <script>
-        function toggleMenu() {
-            var menu = document.querySelector(".nav-links");
-            if (menu.style.display === "flex") {
-                menu.style.display = "none";
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let postsContainer = document.getElementById("posts-container");
+        let posts = Array.from(document.querySelectorAll(".post"));
+        
+        posts.sort((a, b) => {
+            let dateA = new Date(a.dataset.date);
+            let dateB = new Date(b.dataset.date);
+            return dateB - dateA;
+        });
+        
+        posts.forEach(post => postsContainer.appendChild(post));
+    });
+
+    function filterByTag(tag) {
+        let posts = document.querySelectorAll('.post');
+        posts.forEach(post => {
+            if (tag === 'all' || post.dataset.tags.includes(tag)) {
+                post.style.display = 'block';
             } else {
-                menu.style.display = "flex";
+                post.style.display = 'none';
             }
+        });
+    }
+</script>
+
+<script>
+    function toggleMenu() {
+        var menu = document.querySelector(".nav-links");
+        if (menu.style.display === "flex") {
+            menu.style.display = "none";
+        } else {
+            menu.style.display = "flex";
         }
-    </script>
+    }
+</script>
 
 </head>
 
 <body>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="logo">Hallou there! Hope y'all are well! 😎🔥 </div>
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="logo">taken by Orion An Seaweed</div>
 
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-        <div class="nav-links">
-            <a href="index.html">About</a>
-            <a href="extendedcv.html">Extended CV</a>
-            <a href="blog.html">Blog</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="resources.html">Resources</a>
-        </div>
-    </nav>
+    <div class="nav-links">
+        <a href="index.html">About</a>
+        <a href="extendedcv.html">Extended CV</a>
+        <a href="blog.html">Blog</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="resources.html">Resources</a>
+    </div>
+</nav>
 
-    <!-- Main Content -->
-    <div class="container">
+<!-- Main Content -->
+<div class="container">
 
-    <!-- Profile picture -->
-    <div class="profile-container">
-        <img src="figures/my_fig/my_pic.jpeg" alt="My Profile Picture" class="profile-pic">
-        <p style="font-size: 0.9em; color: #555; margin-top: 5px;">
-            Me and my little friend <a href="https://www.facebook.com/photo/?fbid=286905764135103&set=ecnf.100084470452374" target="_blank" rel="noopener noreferrer">Dee Boo</a>.
-        </p>
+<div class="row">
+
+    <div class="column">
+        
+        <img src="gallery/2022-shiro-neko.jpg" alt="San Bach Khoa by Shiro Neko" style="width:100%">
+        <p style="text-align: center;">"Bach Khoa cassava" — Artwork by <a href="https://www.facebook.com/neko.shirou" target="_blank">Shiro Neko</a></p>
+
+        <img src="gallery/2024-GNI.jpg" alt="GNI gift pack" style="width:100%">
+        <p style="text-align: center;"> Google News Initiative Gift Pack (2024) </p>
+
     </div>
 
-    <!-- Title -->
-    <h1 class="title" style="text-align: left; margin-left: 0;">Xuan Tung Hoang</h1>
+    <div class="column">
+
+        <img src="gallery/2025-DrX.jpg" alt="2025 LNY Wishing" style="width:100%">
+        <p style="text-align: center;"> Let's see what I can accomplish this year ^^ </p>
+
+        <img src="gallery/2023-TQB-lib.jpg" alt="Ta Quang Buu Library" style="width: 100%;">
+        <p style="text-align: center;"> Ta Quang Buu Library (2023) </p>
+
+        <img src="gallery/2024-PTPD.jpg" alt="Put the phone down, now!" style="width: 100%;">
+        <p style="text-align: center;"> We found an adorable book while organizing the shelves! </p>
+
+    </div>
+
+    <div class="column">
+
+      <img src="gallery/2024-xPhO-&-lab.jpg" alt="xPhO keychain and lab notebook" style="width:100%">
+      <p style="text-align: center;"> My cherished xPhO keychain and lab notebook. </p>
+
+      <img src="gallery/2018-CSC.jpg" alt="Cam Sieu Choe grocery" style="width: 100%;">
+      <p style="text-align: center;"> Throwback to our lil' online grocery gang in 2017! 📦✨ <br> Missing Cam & Zed! </p>
     
-    <!-- Networks -->
-    <p class="content">
-        <strong>Email:</strong> hxtunq [at] gmail [dot] com or concealedcharacterx [at] gmail [dot] com  
-    </p>
-    <p class="content">
-        <strong>Networks:</strong> 
-        <a href="https://www.linkedin.com/in/hxtung/" target="_blank">LinkedIn</a> | 
-        <a href="https://github.com/orionanseaweed" target="_blank">GitHub</a> | 
-        <a href="https://www.flickr.com/photos/196824145@N03/" target="_blank">Flickr</a> |
-        <a href="https://www.instagram.com/lemarid_an/" target="_blank">Instagram</a>
-    </p>
+    </div>
 
-    <!-- About -->
-    <p class="content">
-        I'm an undergraduate majoring in Biological Engineering at
-        <a href="https://scls.hust.edu.vn/" target="_blank" rel="noopener noreferrer">School of Chemistry and Life Sciences, HUST</a>.
-        Fortunately being surrounded by great teachers and talented peers, I have developed a broad perspective and a deep passion for various scientific fields, 
-        with a special focus on <a href="https://en.wikipedia.org/wiki/Microbiology" target="_blank" rel="noopener noreferrer">microbiology</a> and <a href="https://astrobiology.nasa.gov/about/" target="_blank" rel="noopener noreferrer">astrobiology</a>.
-    </p>
-
-    <!-- Research -->
-    <h2 class="section-title">Research & Vision</h2>
-    <p class="content">
-        My biological research interests focus on the identification of microbial strains, microbial diversity, metagenomics, genome breeding and systems metabolic engineering.
-        Furthermore, I aspire to push biology to the frontier of multidisciplinary fields, such as astrobiology, biophysics, environmental biology, evolutionary biology and geomicrobiology. Kindly refer <a href="https://drive.google.com/file/d/1xCLVK9K0yg2_OQiZRPIGf-pzCPJznsqx/view?usp=sharing" target="_blank" rel="noopener noreferrer">here</a> for details.
-    </p>
-
-    <!-- Miscellaneous -->
-    <h2 class="section-title">Miscellaneous</h2>
-    <p class="content">
-        In my spare time, I commonly write blogs, immerse myself in books or play badminton,
-        when I need to contemplate deeply on something, I prefer to go <a href="/figures/my_fig/trekking_with_friends.jpg" alt="Trekking Ham Lon mountain with Thanh Tung, Kim Chi & Minh Hong" target="_blank" rel="noopener noreferrer">trekking</a>.
-    </p>
-
-    <p class="content">
-        I also sometimes play video games, one of my most memorable moments was winning the
-        <a href="https://www.facebook.com/photo/?fbid=814806730645507&set=pcb.814827817310065" target="_blank" rel="noopener noreferrer">gold medal</a>
-        in Arena of Valor category at Elympics 2023 (<a href="https://www.facebook.com/FOCVNNTU" target="_blank" rel="noopener noreferrer">FOC-VNNTU</a>) 
-        with my amazing teammates.
-    </p>
+  </div>
 
 </div>
 
 </body>
+
 </html>
