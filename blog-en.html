@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Resources — Xuan Tung Hoang</title>
+    <title>Blog — Xuan Tung Hoang</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="figures/logo-and-ref-img/Stone-MinecraftWiki.png">
     <style>
@@ -64,29 +64,23 @@
             margin-bottom: 5px;
         }
         h2 {
-            margin-top: 5px;
-            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
             font-size: 1.5em;
         }
         h3 {
-            margin-top: 10px;
-            margin-bottom: 10px;
+            margin-top: 12px;
             font-size: 1.25em;
         }
-        h4 {
-            margin-top: 5px;
-            margin-bottom: 5px;
-            font-size: 1em;
-        }
         p {
-            margin-top: 5px;
+            margin-top: 10px;
             margin-bottom: 10px;
-            font-size: 0.95em;
+            font-size: 0.9em;
             line-height: 1.6;
         }
         /* modify links */
         a {
-            color: #007bff;
+            color: #000;
             text-decoration: none;
         }
 
@@ -94,7 +88,7 @@
             text-decoration: underline;
         }
         a:visited {
-            color: #007bff;
+            color: #000;
         }
 
         /* Reset & Global Styles */
@@ -196,10 +190,14 @@
         .social-links a.flickr {
             background-color: #ff0084;
         }
+
+        /* hover */
         .social-links a:hover {
             transform: translateY(-2px);
             opacity: 0.9;
         }
+
+        /* smaller icon */
         .social-links i {
             font-size: 1.1em;
         }
@@ -265,19 +263,6 @@
             font-size: 0.85em;
             color: #555;
         }
-        * {
-            box-sizing: border-box;
-        }
-
-        .row {
-            display: flex;
-        }
-
-        /* Create three equal columns that sits next to each other */
-        .column {
-            flex: 33.33%;
-            padding: 5px;
-        }
     </style>
 
 <script>
@@ -323,7 +308,7 @@
 
 <!-- Navigation Bar -->
 <nav class="navbar">
-    <div class="logo">compiled by Kane</div>
+    <div class="logo">written by Little Fried Egg</div>
 
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
@@ -341,23 +326,43 @@
 <div class="container">
 
 <!-- Title -->
-<h1 class="title" style="text-align: left; margin-left: 0;">Resources</h1>
+<h1 class="title" style="text-align: left; margin-left: 0;">Blog</h1>
 
 <hr>
 
-    <p>
-        Take a look at some fascinating and valuable communities, channels & textbooks I've discovered through my experience: <br>
-        <a href="/resources/bio-list.html" target="_blank" rel="noopener noopener">Biology</a> |
-        <a href="/resources/geo-list.html" target="_blank" rel="noopener noopener">Geology</a> |
-        <a href="/resources/phys-list.html" target="_blank" rel="noopener noopener">Physics</a> |
-        <a href="/resources/data-science.html" target="_blank" rel="noopener noopener">Data Science</a>
-        <!-- | <a href="/resources/gen-sci-list.html" target="_blank" rel="noopener noopener">General Science</a>. -->
-    </p>
+<p>Filter by tag: 
+    <a href="#" onclick="filterByTag('all')">All</a> | 
+    <a href="#" onclick="filterByTag('science')">Science</a> | 
+    <a href="#" onclick="filterByTag('astrobiology')">Astrobiology</a> | 
+    <a href="#" onclick="filterByTag('biology')">Biology</a> |
+    <a href="#" onclick="filterByTag('geology')">Geology</a>
+</p>
 
 <hr>
+
+<div id="posts-container">
+    
+    <div class="post" data-tags="science" data-date="2024-08-19">
+        <h3><a href="blog-en/p2-s1-dyson-sphere.html" target="_blank">S1. Dyson Sphere</a></h3>
+        <p class="date">Published on: Aug 18, 2024</p>
+        <p>Short introduction to Dyson Sphere.</p>
+        <p class="tags">Tags: Science</p>
+    </div>
+
+    <!-- Low quality post
+
+    <div class="post" data-tags="astrobiology biology" data-date="2024-08-18">
+        <h3><a href="blog/p1-a1-astrobiology.html">A1. Astrobiology</a></h3>
+        <p class="date">Published on: Aug 18, 2024</p>
+        <p>Short introduction to Astrobiology.</p>
+        <p class="tags">Tags: Astrobiology</p>
+    </div>
+    
+    -->
 
 </div>
 
-</body>
+<hr>
 
+</body>
 </html>
