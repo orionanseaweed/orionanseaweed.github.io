@@ -52,15 +52,38 @@
             margin-bottom: 10px;
             line-height: 1.6;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            margin-top: 20px;
+        }
+
+        td {
+            padding: 5px 0px;
+            vertical-align: top;
+            font-size: 0.9em;
+            text-align: left;
+        }
+
+        td:first-child {
+            width: 15%; /* Cột tên tạp chí */
+        }
+
+        td:nth-child(2) {
+            width: 75%; /* Cột tiêu đề bài viết */
+        }
+
+        td:last-child {
+            width: 10%; /* Cột năm */
+            text-align: right;
+            white-space: nowrap;
+        }
     </style>
     <title> Biology Articles — Xuan Tung Hoang </title>
 </head>
 
 <body>
-
-<table>
-<tbody><tr>
-<td width="70%" style="vertical-align:top">
 
 <h1> Biology Articles for Undergraduate </h1>
 
@@ -103,3 +126,7 @@
         <td>2021</td>
     </tr>
 </table>
+
+</body>
+
+</html>
