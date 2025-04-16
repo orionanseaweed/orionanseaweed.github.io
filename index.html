@@ -6,233 +6,8 @@
     <title>Xuan Tung Hoang</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="figures/logo-and-ref-img/Stone-MinecraftWiki.png">
-    <style>
-        /* title & subtitle */
-        .title {
-            font-size: 2.2em;
-            font-weight: 700;
-            color: #002147;
-            text-align: center;
-            margin-bottom: 8px;
-        }
-        .subtitle {
-            font-size: 1.2em;
-            color: #555;
-            text-align: center;
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-        /* content */
-        .content {
-            text-align: justify;
-            font-size: 0.95em;
-            line-height: 1.6;
-            margin-top: 8px;
-            margin-bottom: 10px;
-        }
-        /* Container */
-        .container {
-            max-width: 850px;
-            margin: 30px auto;
-            padding: 15px;
-            background: white;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 6px;
-        }
-        .profile-container {
-            float: right;
-            margin-left: 60px;
-            text-align: center;
-            max-width: 230px;
-        }
-        .profile-pic {
-            float: right;
-            margin-top: 10px;
-            margin-left: 10px;
-            border-radius: 5px;
-            max-width: 230px;
-            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
-        }
-        /* modify section titles */
-        .section-title {
-            font-size: 1.4em;
-            font-weight: 600;
-            margin-top: 15px;
-            margin-bottom: 8px;
-            padding-bottom: 0px;
-            border-bottom: 2px solid #3636ea;
-            display: inline-block;
-        }
-
-        /* modify links */
-        a {
-            color: #3636ea;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-        a:visited {
-            color: #3636ea;
-        }
-
-        /* reset & global styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.5;
-            font-size: 14px;
-            padding-top: 50px;
-        }
-
-        /* Navbar */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #002147;
-            color: white;
-            padding: 9px 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-        }
-
-        .navbar .logo {
-            font-size: 1.2em;
-            font-weight: 700;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .nav-links a {
-            color: white;
-            font-size: 0.9em;
-            font-weight: 500;
-            text-decoration: none;
-            padding: 6px 0;
-            transition: opacity 0.3s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.7;
-        }
-
-        /* hide menu in desktop */
-        .menu-toggle {
-            display: none;
-            font-size: 1.5em;
-            cursor: pointer;
-        }
-
-        /* social links */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .social-links a:hover {
-            background-color: #0056b3;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 14px;
-            font-size: 0.9em;
-            font-weight: 500;
-            text-decoration: none;
-            color: white;
-            border-radius: 20px;
-            transition: all 0.3s ease-in-out;
-            border: none;
-        }
-
-        /* modify button colors */
-        .social-links a.linkedin {
-            background-color: #0077b5;
-        }
-
-        .social-links a.github {
-            background-color: #333;
-        }
-
-        .social-links a.flickr {
-            background-color: #ff0084;
-        }
-
-        /* hover */
-        .social-links a:hover {
-            transform: translateY(-2px);
-            opacity: 0.9;
-        }
-
-        /* smaller icon */
-        .social-links i {
-            font-size: 1.1em;
-        }
-
-        @media (max-width: 768px) {
-
-            .navbar {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                padding: 8px 12px;
-            }
-
-            .menu-toggle {
-                padding: 8px 12px;
-                display: flex;
-                align-self: center;
-            }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 6px;
-                width: 100%;
-                background-color: #002147;
-                padding-top: 10px;
-                position: absolute;
-                top: 100%;
-                left: 0;
-            }
-
-            .nav-links a {
-                padding: 8px 12px;
-                width: 100%;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            /* Ẩn ảnh profile trên màn hình nhỏ */
-            .profile-container {
-                display: none;
-            }
-        }
-
-    </style>
+    <link rel="stylesheet" href="style-index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
         function toggleMenu() {
@@ -251,7 +26,7 @@
 
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="logo">Salutations to the world. Let's make today meaningful! 🌄</div>
+        <div class="logo">Xuan Tung Hoang</div>
 
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
@@ -265,62 +40,98 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="container">
+    <!-- Wrapper for sidebar and content -->
+    <div class="page-wrapper">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-profile-img">
+                <img src="figures/my_fig/my_pic.jpeg" alt="Xuan Tung Hoang">
+            </div>
+            <div class="sidebar-name">Xuan Tung Hoang</div>
 
-    <!-- Profile picture -->
-    <div class="profile-container">
-        <img src="figures/my_fig/my_pic.jpeg" alt="My Profile Picture" class="profile-pic">
-        <p style="font-size: 0.9em; color: #555; margin-top: 5px;">
-            Me and my little friend <a href="https://www.facebook.com/photo/?fbid=286905764135103&set=ecnf.100084470452374" target="_blank" rel="noopener noreferrer">Dee Boo</a>.
-        </p>
+            <div class="sidebar-tag">Science Enthusiast, HUSTer</div>
+            
+            <div class="sidebar-divider"></div>
+            
+            <div class="sidebar-contact-info">
+                <div class="sidebar-contact-item">
+                    <div class="sidebar-icon">✉</div>
+                    <div>
+                        <div class="sidebar-contact-label">EMAIL</div>
+                        <div class="sidebar-contact-value">hxtunq [at] gmail [dot] com</div>
+                    </div>
+                </div>
+
+                <div class="sidebar-contact-item">
+                    <div class="sidebar-icon">🔬</div>
+                    <div>
+                        <div class="sidebar-contact-label">RESEARCH</div>
+                        <div class="sidebar-contact-value">Microbiology, Astrobiology</div>
+                    </div>
+                </div>
+                
+                <div class="sidebar-contact-item">
+                    <div class="sidebar-icon">🏢</div>
+                    <div>
+                        <div class="sidebar-contact-label">LOCATION</div>
+                        <div class="sidebar-contact-value">Somewhere, here on, Earth</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-divider"></div>
+                    
+            <div class="sidebar-social-links">
+                <a href="https://www.linkedin.com/in/hxtung/" target="_blank" class="sidebar-social-icon">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/orionanseaweed" target="_blank" class="sidebar-social-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.flickr.com/photos/196824145@N03/" target="_blank" class="sidebar-social-icon">
+                    <i class="fab fa-flickr"></i>
+                </a>
+                <a href="https://www.instagram.com/lemarid_an/" target="_blank" class="sidebar-social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="container">
+
+            <!-- About -->
+            <h1>Salutations to the world. Let's make today meaningful! 🌄</h1>
+            <h2 class="section-title">About</h2>
+            <p class="content">
+                I'm an undergraduate majoring in Biological engineering at the School of Chemistry and Life Sciences (<a href="https://scls.hust.edu.vn/" target="_blank" rel="noopener noreferrer">visit</a>),
+                Hanoi University of Science and Technology, Vietnam.
+                Throughout my journey, I've been fortunate to be surrounded by inspiring mentors and talented peers, which has fueled my deep passion for various scientific fields, especially
+                <a href="https://en.wikipedia.org/wiki/Microbiology" target="_blank" rel="noopener noreferrer">microbiology</a> and <a href="https://astrobiology.nasa.gov/about/" target="_blank" rel="noopener noreferrer">astrobiology</a>.
+            </p>
+
+            <!-- Research -->
+            <h2 class="section-title">Research & Vision</h2>
+            <p class="content">
+                My research interests focus on the identification and preservation of microbial strains, microbial diversity, metagenomics, genome breeding, and systems metabolic engineering.
+                I am also interested in applying biological approaches to tackle questions at the intersection of biology and other disciplines, including astrobiology, biophysics, environmental biology, evolutionary biology, and geomicrobiology. Kindly refer <a href="https://drive.google.com/file/d/1xCLVK9K0yg2_OQiZRPIGf-pzCPJznsqx/view?usp=sharing" target="_blank" rel="noopener noreferrer">here</a> for details.
+            </p>
+
+            <!-- Miscellaneous -->
+            <h2 class="section-title">Miscellaneous</h2>
+            <p class="content">
+                In my spare time, I often immerse myself in books and <a href="https://open.spotify.com/playlist/1Vpenzl2qq0ya9ipYPRt40?si=4abd837320504070" target="_blank" rel="noopener noreferrer">musics</a>, play badminton, or go <a href="/figures/my_fig/trekking_with_friends.jpg" alt="Trekking Ham Lon mountain with Thanh Tung, Kim Chi & Minh Hong" target="_blank" rel="noopener noreferrer">trekking</a>.
+                My favorite anime character at the moment is Binchou-tan — a tiny, adorable and hardworking girl who reminds me of the beauty in simplicity and quiet strength.
+            </p>
+                
+            <p class="content">
+                I also sometimes play video games, one of my most memorable moments was winning the
+                <a href="https://www.facebook.com/photo/?fbid=814806730645507&set=pcb.814827817310065" target="_blank" rel="noopener noreferrer">gold medal</a>
+                in Arena of Valor category at Elympics 2023 (<a href="https://www.facebook.com/FOCVNNTU" target="_blank" rel="noopener noreferrer">FOC-VNNTU</a>) 
+                with my amazing teammates.
+            </p>
+        </div>
     </div>
-
-    <!-- Title -->
-    <h1 class="title" style="text-align: left; margin-left: 0;">Xuan Tung Hoang</h1>
-    
-    <!-- Networks -->
-    <p class="content">
-        <strong>Email:</strong> hxtunq [at] gmail [dot] com or concealedcharacterx [at] gmail [dot] com  
-    </p>
-    <p class="content">
-        <strong>Networks:</strong> 
-        <a href="https://www.linkedin.com/in/hxtung/" target="_blank">LinkedIn</a> | 
-        <a href="https://github.com/orionanseaweed" target="_blank">GitHub</a> | 
-        <a href="https://www.flickr.com/photos/196824145@N03/" target="_blank">Flickr</a> |
-        <a href="https://www.instagram.com/lemarid_an/" target="_blank">Instagram</a>
-    </p>
-
-    <!-- About -->
-    <p class="content">
-        I'm an undergraduate majoring in Bioengineering at the School of Chemistry and Life Sciences,
-        <a href="https://scls.hust.edu.vn/" target="_blank" rel="noopener noreferrer">HUST</a>.
-        Throughout my journey, I’ve been fortunate to be surrounded by inspiring mentors and talented peers, which has fueled my deep passion for various scientific fields, especially
-        <a href="https://en.wikipedia.org/wiki/Microbiology" target="_blank" rel="noopener noreferrer">microbiology</a> and <a href="https://astrobiology.nasa.gov/about/" target="_blank" rel="noopener noreferrer">astrobiology</a>.
-    </p>
-
-    <!-- Research -->
-    <h2 class="section-title">Research & Vision</h2>
-    <p class="content">
-        My research interests focus on the identification and preservation of microbial strains, microbial diversity, metagenomics, genome breeding, and systems metabolic engineering.
-        I am also interested in applying biological approaches to tackle questions at the intersection of biology and other disciplines, including astrobiology, biophysics, environmental biology, evolutionary biology, and geomicrobiology. Kindly refer <a href="https://drive.google.com/file/d/1xCLVK9K0yg2_OQiZRPIGf-pzCPJznsqx/view?usp=sharing" target="_blank" rel="noopener noreferrer">here</a> for details.
-    </p>
-
-    <!-- Miscellaneous -->
-    <h2 class="section-title">Miscellaneous</h2>
-    <p class="content">
-        In my spare time, I often immerse myself in books and <a href="https://open.spotify.com/playlist/1Vpenzl2qq0ya9ipYPRt40?si=4abd837320504070" target="_blank" rel="noopener noreferrer">musics</a>, play badminton, or go <a href="/figures/my_fig/trekking_with_friends.jpg" alt="Trekking Ham Lon mountain with Thanh Tung, Kim Chi & Minh Hong" target="_blank" rel="noopener noreferrer">trekking</a>.
-        My favorite anime character at the moment is Binchou-tan — a tiny, adorable and hardworking girl who reminds me of the beauty in simplicity and quiet strength.
-    </p>
-        
-    <p class="content">
-        I also sometimes play video games, one of my most memorable moments was winning the
-        <a href="https://www.facebook.com/photo/?fbid=814806730645507&set=pcb.814827817310065" target="_blank" rel="noopener noreferrer">gold medal</a>
-        in Arena of Valor category at Elympics 2023 (<a href="https://www.facebook.com/FOCVNNTU" target="_blank" rel="noopener noreferrer">FOC-VNNTU</a>) 
-        with my amazing teammates.
-    </p>
-
-</div>
 
 </body>
 </html>
