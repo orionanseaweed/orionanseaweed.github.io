@@ -6,60 +6,14 @@
     <title>Gallery — Xuan Tung Hoang</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="figures/logo-and-ref-img/Stone-MinecraftWiki.png">
+    <link rel="stylesheet" href="style-index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .title {
-            font-size: 2.2em;
-            font-weight: 700;
-            color: #002147;
-            text-align: center;
-            margin-bottom: 8px;
-        }
-        .subtitle {
-            font-size: 1.2em;
-            color: #555;
-            text-align: center;
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-        .content {
-            text-align: justify;
-            font-size: 0.95em;
-            line-height: 1.6;
-            margin-top: 8px;
-            margin-bottom: 10px;
-        }
         .container {
             max-width: 1200px;
-            margin: 30px auto;
-            padding: 15px;
-            background: white;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 6px;
-        }
-        .profile-container {
-            float: right;
-            margin-left: 70px;
-            text-align: center;
-            max-width: 230px;
-        }
-        .profile-pic {
-            float: right;
-            margin-left: 15px;
-            border-radius: 5px;
-            max-width: 258px;
-            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
-        }
-        .section-title {
-            font-size: 1.4em;
-            font-weight: 600;
-            margin-top: 25px;
-            margin-bottom: 8px;
-            padding-bottom: 4px;
-            border-bottom: 2px solid #007bff;
-            display: inline-block;
         }
         h1 {
-            margin-top: 5px; /* Giảm khoảng cách trên của tiêu đề */
+            margin-top: 5px;
             font-size: 2em;
             margin-bottom: 5px;
         }
@@ -84,203 +38,19 @@
             font-size: 0.95em;
             line-height: 1.6;
         }
-        /* modify links */
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-        a:visited {
-            color: #007bff;
-        }
-
-        /* Reset & Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.5;
-            font-size: 14px;
-            padding-top: 50px;
-        }
-
-        /* Navbar */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #002147;
-            color: white;
-            padding: 9px 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-        }
-
-        .navbar .logo {
-            font-size: 1.2em;
-            font-weight: 700;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .nav-links a {
-            color: white;
-            font-size: 0.9em;
-            font-weight: 500;
-            text-decoration: none;
-            padding: 6px 0;
-            transition: opacity 0.3s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.7;
-        }
-
-        /* hide menu in desktop */
-        .menu-toggle {
-            display: none;
-            font-size: 1.5em;
-            cursor: pointer;
-        }
-
-        /* social links */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .social-links a:hover {
-            background-color: #0056b3;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 14px;
-            font-size: 0.9em;
-            font-weight: 500;
-            text-decoration: none;
-            color: white;
-            border-radius: 20px;
-            transition: all 0.3s ease-in-out;
-            border: none;
-        }
-
-        /* modify button colors */
-        .social-links a.linkedin {
-            background-color: #0077b5;
-        }
-
-        .social-links a.github {
-            background-color: #333;
-        }
-
-        .social-links a.flickr {
-            background-color: #ff0084;
-        }
-        .social-links a:hover {
-            transform: translateY(-2px);
-            opacity: 0.9;
-        }
-        .social-links i {
-            font-size: 1.1em;
-        }
-
-
-        /* sections */
-        .section-title {
-            font-size: 1.4em;
-            font-weight: 600;
-            margin-top: 10px;
-            margin-bottom: 4px;
-            padding-bottom: 4px;
-            border-bottom: 2px solid #007bff;
-            display: inline-block;
-        }
-
-        @media (max-width: 768px) {
-
-            .navbar {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                padding: 8px 12px;
-            }
-
-            .menu-toggle {
-                padding: 9px 12px;
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 6px;
-                width: 100%;
-                background-color: #002147;
-                padding-top: 10px;
-                position: absolute;
-                top: 100%;
-                left: 0;
-            }
-
-            .nav-links a {
-                padding: 8px 12px;
-                width: 100%;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            /* Ẩn ảnh profile trên màn hình nhỏ */
-            .profile-container {
-                display: none;
-            }
-        }
-
-        .post {
-            margin-bottom: 20px;
-        }
-        .tags, .date {
-            font-size: 0.85em;
-            color: #555;
-        }
         * {
             box-sizing: border-box;
         }
-
         .row {
             display: flex;
         }
-
-        /* Create three equal columns that sits next to each other */
         .column {
             flex: 33.33%;
             padding: 5px;
         }
     </style>
 
-<script>
+    <script>
     document.addEventListener("DOMContentLoaded", function () {
         let postsContainer = document.getElementById("posts-container");
         let posts = Array.from(document.querySelectorAll(".post"));
@@ -304,9 +74,9 @@
             }
         });
     }
-</script>
+    </script>
 
-<script>
+    <script>
     function toggleMenu() {
         var menu = document.querySelector(".nav-links");
         if (menu.style.display === "flex") {
@@ -315,27 +85,52 @@
             menu.style.display = "flex";
         }
     }
-</script>
-
+    </script>
 </head>
 
 <body>
 
 <!-- Navigation Bar -->
 <nav class="navbar">
-    <div class="logo">taken by Orion An Seaweed</div>
-
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
+    <div class="logo">Xuan Tung Hoang</div>
+    
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+    
     <div class="nav-links">
         <a href="index.html">About</a>
         <a href="extendedcv.html">Extended CV</a>
         <a href="blog-en.html">Blog-en</a>
         <a href="blog-vi.html">Blog-vi</a>
-        <a href="gallery.html">Gallery</a>
+        <a href="gallery.html" class="active">Gallery</a>
         <a href="resources.html">Resources</a>
     </div>
 </nav>
+
+<script>
+    // Improved menu toggle function
+    function toggleMenu() {
+        var menu = document.querySelector(".nav-links");
+        if (menu.style.display === "flex") {
+            menu.style.display = "none";
+        } else {
+            menu.style.display = "flex";
+        }
+    }
+    
+    // Add active class to current page
+    document.addEventListener("DOMContentLoaded", function() {
+        const currentPage = window.location.pathname.split("/").pop() || "index.html";
+        const navLinks = document.querySelectorAll(".nav-links a");
+        
+        navLinks.forEach(link => {
+            if (link.getAttribute("href") === currentPage) {
+                link.classList.add("active");
+            }
+        });
+    });
+</script>
 
 <!-- Main Content -->
 <div class="container">

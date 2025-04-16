@@ -6,272 +6,36 @@
     <title>CV — Xuan Tung Hoang</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="figures/logo-and-ref-img/Stone-MinecraftWiki.png">
+    <link rel="stylesheet" href="style-index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .title {
-            font-size: 2em;
-            font-weight: 700;
-            color: #002147;
-            text-align: center;
-            margin-bottom: 8px;
-        }
-        .subtitle {
-            font-size: 1.2em;
-            color: #555;
-            text-align: center;
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-        .content {
-            text-align: justify;
-            font-size: 0.95em;
-            line-height: 1.6;
-            margin-top: 8px;
-            margin-bottom: 10px;
-        }
-        .container {
-            max-width: 850px;
-            margin: 30px auto;
-            padding: 15px;
-            background: white;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 6px;
-        }
-        .profile-container {
-            float: right;
-            margin-left: 70px;
-            text-align: center;
-            max-width: 230px;
-        }
-        .profile-pic {
-            float: right;
-            margin-left: 15px;
-            border-radius: 5px;
-            max-width: 258px;
-            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
-        }
-        .section-title {
-            font-size: 1.4em;
-            font-weight: 600;
-            margin-top: 15px;
-            margin-bottom: 8px;
-            padding-bottom: 0px;
-            text-decoration: none;
-        }
-        a {
-            color: #3636ea;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        a:visited {
-            color: #3636ea;
-        }
-        .margin-note-1 {
-            float: right;
-            width: 20%;
-            font-size: 0.85em;
-            color: #555;
-            background: #f8f9fa;
-            padding: 5px;
-            margin-top: 70px;
-            border-left: 2px solid #3636ea;
-            margin-left: 50px;
-        }
-        /* reset & global styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.5;
-            font-size: 14px;
-            padding-top: 50px;
-        }
-        /* navbar */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #002147;
-            color: white;
-            padding: 9px 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-        }
-
-        .navbar .logo {
-            font-size: 1.2em;
-            font-weight: 700;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .nav-links a {
-            color: white;
-            font-size: 0.9em;
-            font-weight: 500;
-            text-decoration: none;
-            padding: 6px 0;
-            transition: opacity 0.3s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.7;
-        }
-
-        /* hide menu in desktop */
-        .menu-toggle {
-            display: none;
-            font-size: 1.5em;
-            cursor: pointer;
-        }
-
-        /* social links */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .social-links a:hover {
-            background-color: #0056b3;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 14px;
-            font-size: 0.9em;
-            font-weight: 500;
-            text-decoration: none;
-            color: white;
-            border-radius: 20px;
-            transition: all 0.3s ease-in-out;
-            border: none;
-        }
-
-        /* modify button colors */
-        .social-links a.linkedin {
-            background-color: #0077b5;
-        }
-
-        .social-links a.github {
-            background-color: #333;
-        }
-
-        .social-links a.flickr {
-            background-color: #ff0084;
-        }
-
-        /* hover */
-        .social-links a:hover {
-            transform: translateY(-2px);
-            opacity: 0.9;
-        }
-
-        /* smaller icon */
-        .social-links i {
-            font-size: 1.1em;
-        }
-
-        @media (max-width: 768px) {
-
-            .navbar {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                padding: 8px 12px;
-            }
-
-            .menu-toggle {
-                padding: 8px 12px;
-                display: flex;
-                align-self: center;
-            }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 6px;
-                width: 100%;
-                background-color: #002147;
-                padding-top: 10px;
-                position: absolute;
-                top: 100%;
-                left: 0;
-            }
-
-            .nav-links a {
-                padding: 8px 12px;
-                width: 100%;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            /* Ẩn ảnh profile trên màn hình nhỏ */
-            .profile-container {
-                display: none;
-            }
-        }
-
         .section {
             margin-bottom: 5px;
+            position: relative;
         }
         .date {
             float: right;
             margin-left: 15px;
+            font-size: 1em;
         }
         .header {
             font-size: 1em;
             font-weight: 600;
             margin-top: 15px;
-            margin-bottom: 8px;
+            margin-bottom: 15px;
             padding-bottom: 0px;
             text-decoration: none;
+            position: relative;
         }
         .sub-header {
-            font-size: 0.9em;
+            font-size: 0.95em;
+            margin-top: 15px;
+            margin-bottom: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             text-decoration: none;
-        }
-        h1 {
-            margin-top: 5px; /* Giảm khoảng cách trên của tiêu đề */
-            font-size: 2em;
-            margin-bottom: 5px;
-        }
-        h2 {
-            margin-top: 5px;
-            margin-bottom: 5px;
-            font-size: 1.5em;
-        }
-        h3 {
-            margin-top: 5px;
-            margin-bottom: 5px;
-            font-size: 1.25em;
-        }
-        h4 {
-            margin-top: 5px;
-            margin-bottom: 5px;
-            font-size: 1em;
+            position: relative;
         }
         p {
             margin-top: 5px;
@@ -279,84 +43,183 @@
             font-size: 0.95em;
             line-height: 1.6;
         }
-        ol {
-            font-size: 0.95em;
-            margin: 0;
-            padding-left: 30px; /* Khoảng cách lề trái mặc định */
+        /* Modified margin-note-1 class */
+        body {
+            position: relative; /* Makes body the positioning context */
+            overflow-x: hidden; /* Prevents horizontal scrolling */
         }
-        ol li {
-            font-size: 0.95em;
-            margin-top: 0px;
-            margin-bottom: 10px; /* Đảm bảo không có khoảng trống thừa */
-            line-height: 1.6;
+        
+        .container {
+            position: relative;
+            width: 70%; /* Reduce container width to make room for margin notes */
         }
-        ul {
-            font-size: 0.95em;
-            margin: 0;
-            padding-left: 30px; /* Khoảng cách lề trái mặc định */
+        
+        /* Style for the external margin note */
+        .external-margin-note {
+            position: absolute;
+            right: calc(4% - 30px);
+            width: 280px;
+            font-size: 0.85em;
+            color: #555;
+            background: #f8f9fa;
+            padding: 8px;
+            border-left: 2px solid #3636ea;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 100;
+        }        
+        
+        /* Adding a class to target specific list item */
+        .target-item {
+            position: relative; /* For position reference */
         }
-        ul li {
-            font-size: 0.95em;
-            margin-top: 5px;
-            margin-bottom: 10px; /* Đảm bảo không có khoảng trống thừa */
-            line-height: 1.6;
-        }
-        u {    
-            border-bottom: 1.5px dotted #000;
-            text-decoration: none;
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .margin-note-1 {
+                position: relative;
+                right: auto;
+                width: 100%;
+                margin: 20px 0;
+                box-sizing: border-box;
+            }
+
+            .container {
+                width: 90%; /* Expand container on smaller screens */
+            }
+            
+            .external-margin-note {
+                position: relative;
+                width: 90%;
+                right: auto;
+                margin: 10px auto;
+                box-sizing: border-box;
+            }
         }
     </style>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        let postsContainer = document.getElementById("posts-container");
-        let posts = Array.from(document.querySelectorAll(".post"));
-        
-        posts.sort((a, b) => {
-            let dateA = new Date(a.dataset.date);
-            let dateB = new Date(b.dataset.date);
-            return dateB - dateA;
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let postsContainer = document.getElementById("posts-container");
+            let posts = Array.from(document.querySelectorAll(".post"));
+            
+            posts.sort((a, b) => {
+                let dateA = new Date(a.dataset.date);
+                let dateB = new Date(b.dataset.date);
+                return dateB - dateA;
+            });
+            
+            posts.forEach(post => postsContainer.appendChild(post));
         });
-        
-        posts.forEach(post => postsContainer.appendChild(post));
-    });
 
-    function filterByTag(tag) {
-        let posts = document.querySelectorAll('.post');
-        posts.forEach(post => {
-            if (tag === 'all' || post.dataset.tags.includes(tag)) {
-                post.style.display = 'block';
-            } else {
-                post.style.display = 'none';
-            }
-        });
-    }
-</script>
-
-<script>
-    function toggleMenu() {
-        var menu = document.querySelector(".nav-links");
-        if (menu.style.display === "flex") {
-            menu.style.display = "none";
-        } else {
-            menu.style.display = "flex";
+        function filterByTag(tag) {
+            let posts = document.querySelectorAll('.post');
+            posts.forEach(post => {
+                if (tag === 'all' || post.dataset.tags.includes(tag)) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
         }
-    }
-</script>
+    </script>
 
+    <script>
+        function toggleMenu() {
+            var menu = document.querySelector(".nav-links");
+            if (menu.style.display === "flex") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "flex";
+            }
+        }
+    </script>
 </head>
 
 <body>
 
+    <!-- Margin notes -->
+    <div id="cv-note-1" class="external-margin-note">
+        📌 This is an extended version of my CV.
+        <br> The shorter official one is available <a href="/CV-HXT.pdf" target="_blank" rel="noopener noreferrer">here</a>.
+        <br>
+    </div>
+
+    <div id="edu-note-1" class="external-margin-note">
+        I'm seeking for postgraduate opportunities 🎇
+    </div>
+
+    <div id="xpho-note-1" class="external-margin-note">
+        📁 Supplementary material (YTB):
+        <br>
+        <a href="https://youtube.com/playlist?list=PLhxSjdZcwo54Z0fqHABfHZgvR6L8xHiZ6&si=RUokEfTpAwF9GVwW" target="_blank" rel="noopener noreferrer">xPhO's astronomy presentation playlist</a>.
+    </div>
+
+    <div id="xpho-note-2-savelyev" class="external-margin-note">
+        📁 Supplementary material (GitHub):
+        <br>
+        <a href="https://github.com/Duy247/savelyev_1/tree/main" target="_blank" rel="noopener noreferrer">Savelyev Project</a> - draft version.
+    </div>
+
+    <div id="dfb-note-1" class="external-margin-note">
+        ✨ For highlights and achievements, see our:
+        <br>
+        <a href="https://www.facebook.com/dfreebook/posts/pfbid0pbVKddDK9t2fSrz9miqCU1FhsDVEPeKn6NfmcoB3LaSRqsG5pGZZmC8Vy7JtQ1NMl" target="_blank" rel="noopener noreferrer">2024 DFB Wrapped</a> (FB).
+        <br>
+    </div>
+
+    <script>
+        // Position all margin notes next to their respective target items
+        document.addEventListener("DOMContentLoaded", function() {
+            // Function to position a note next to its target
+            function positionNote(noteId, targetElement) {
+                const note = document.getElementById(noteId);
+                
+                if (note && targetElement) {
+                    // Initial positioning
+                    const rect = targetElement.getBoundingClientRect();
+                    note.style.top = (window.scrollY + rect.top) + 'px';
+                }
+            }
+            
+            // Position all notes
+            const targetItems = document.querySelectorAll('.target-item');
+            targetItems.forEach(item => {
+                const noteId = item.getAttribute('data-note-id');
+                if (noteId) {
+                    positionNote(noteId, item);
+                }
+            });
+            
+            // Update positions on window resize and scroll
+            function updatePositions() {
+                targetItems.forEach(item => {
+                    const noteId = item.getAttribute('data-note-id');
+                    if (noteId) {
+                        const note = document.getElementById(noteId);
+                        const rect = item.getBoundingClientRect();
+                        if (note) {
+                            note.style.top = (window.scrollY + rect.top) + 'px';
+                        }
+                    }
+                });
+            }
+            
+            window.addEventListener('resize', updatePositions);
+            window.addEventListener('scroll', updatePositions);
+        });
+    </script>
+
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="logo">I'm seeking for postgraduate opportunities 🎇</div>
-
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
+        <div class="logo">Xuan Tung Hoang</div>
+        
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        
         <div class="nav-links">
             <a href="index.html">About</a>
-            <a href="extendedcv.html">Extended CV</a>
+            <a href="extendedcv.html" class="active">Extended CV</a>
             <a href="blog-en.html">Blog-en</a>
             <a href="blog-vi.html">Blog-vi</a>
             <a href="gallery.html">Gallery</a>
@@ -364,15 +227,35 @@
         </div>
     </nav>
 
-    <p class="margin-note-1">
-        * Note: This is an extended version of my CV. <br> The shorter official one is available <a href="/CV-HXT.pdf" target="_blank" rel="noopener noreferrer">here</a>.
-    </p>
+    <script>
+        // Improved menu toggle function
+        function toggleMenu() {
+            var menu = document.querySelector(".nav-links");
+            if (menu.style.display === "flex") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "flex";
+            }
+        }
+        
+        // Add active class to current page
+        document.addEventListener("DOMContentLoaded", function() {
+            const currentPage = window.location.pathname.split("/").pop() || "index.html";
+            const navLinks = document.querySelectorAll(".nav-links a");
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute("href") === currentPage) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
     
     <!-- Main Content -->
     <div class="container">
 
     <!-- Title -->
-    <h1 class="title" style="text-align: left; margin-left: 0;">Xuan Tung Hoang</h1>
+    <h1 class="title, target-item" data-note-id="cv-note-1" style="text-align: left; margin-left: 0;">Xuan Tung Hoang</h1>
 
     <p class="content">
         <strong>Email:</strong> hxtunq [at] gmail [dot] com or concealedcharacterx [at] gmail [dot] com  
@@ -382,11 +265,10 @@
         <strong>Networks: </strong>
         <a href="https://www.linkedin.com/in/hxtung/" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
         <a href="https://github.com/orionanseaweed" target="_blank" rel="noopener noreferrer">GitHub</a> |
-        <a href="orionanseaweed.github.io">Website</a> |
-        <a href="https://www.flickr.com/photos/196824145@N03/" target="_blank" rel="noopener noreferrer">Flickr</a>
+        <a href="orionanseaweed.github.io">Website</a>
     </p>
 
-    <hr>
+    <hr class="new3">
 
     <div class="section">
 
@@ -407,12 +289,12 @@
 
     </div>
 
-    <hr>
+    <hr class="new3">
 
     <div class="section">
 
         <div class="header">
-            <h2>Education</h2>
+            <h2> Education </h2>
         </div>
 
         <div class="sub-header">
@@ -420,11 +302,11 @@
             <span class="date">Sep. 2021 — Jul. 2026</span>
         </div>
 
-        <p class="indent"><i>B.S. in Biological Engineering</i></p>
+        <p class="indent,  target-item" data-note-id="edu-note-1">B.S. in Biological Engineering</p>
 
     </div>
 
-    <hr>
+    <hr class="new3">
 
     <div class="section">
 
@@ -459,32 +341,31 @@
         
     </div>
 
-    <hr>
+    <hr class="new3">
 
     <div class="section">
 
         <div class="header">
-            <h2>Volunteering</h2>
+            <h2> Volunteering </h2>
         </div>
 
-        <div class="sub-header">
-            <h3 style="font-weight: normal;">Les Misérable at <a href="https://www.facebook.com/xPhO.org" target="_blank" rel="noopener noreferrer">xPhO Physics Club</a></h3>
-            <span class="date">Jul. 2022 — now</span>
+            <div class="sub-header">
+                <h3 style="font-weight: normal;">Les Misérable at <a href="https://www.facebook.com/xPhO.org" target="_blank" rel="noopener noreferrer">xPhO Physics Club</a></h3>
+                <span class="date">Jul. 2022 — now</span>
+            </div>
         </div>
 
         <ul>
-            <li>
+            <li class="target-item" data-note-id="xpho-note-1">
                 Since entering xPhO in 2022, I gradually became more engaged in discussions on astronomy, eventually expanding into other branches of physics and sciences in general.
                 Through these conversations, I had the chance to connect with many talented individuals and gain insights from their inspiring academic journeys.
                 It is no exaggeration to say that this was the moment when my mind truly began to embrace and shape the passion for scientific pursuit that would stay with me for years to come.
-                <br>
-                Supplementary material: <a href="https://youtube.com/playlist?list=PLhxSjdZcwo54Z0fqHABfHZgvR6L8xHiZ6&si=RUokEfTpAwF9GVwW" target="_blank" rel="noopener noreferrer">xPhO's astronomy presentation playlist</a>.
             </li>
         
-            <li> In early 2023, I joined the project "LaTeX Revision of I. V. Savelyev's Physics: A General Course",
-            working on revising Volume I and translating Volume II of this classic textbook (before its official publication, you can access it <a href="https://github.com/Duy247/savelyev_1/tree/main" target="_blank" rel="noopener noreferrer">here</a> first). Around that time, I officially took on the role of a technician.
-            Our goal was to make fundamental and valuable physics resources more accessible to Vietnamese high school students and physics enthusiasts.
-            Through this experience, I significantly improved my proficiency in LaTeX and GitHub while also strengthening my English, professional teamwork and critical thinking skills.
+            <li class="target-item" data-note-id="xpho-note-2-savelyev">
+                In early 2023, I joined the project "LaTeX Revision of I. V. Savelyev's Physics: A General Course",
+                working on revising Volume I and translating Volume II of this classic textbook. Around that time, I officially took on the role of a technician.
+                Our goal was to make fundamental and valuable physics resources more accessible to Vietnamese high school students and physics enthusiasts.
             </li>
 
         </ul>
@@ -496,33 +377,35 @@
         </div>
 
         <ul>
-            <li> As a member, I contributed to the operation and maintained the gentle beauty of DFB, assisted with book organization and borrower support
-            while helping to promote reading and foster trust within the community.
+            <li>
+                As a member, I contributed to the operation and maintained the gentle beauty of DFB, assisted with book organization and borrower support
+                while helping to promote reading and foster trust within the community.
             </li>
 
-            <li> As a head librarian, I led a team of 15 members in managing the library's collection and data entry,
-            as well as coordinating the circulation of over 1,000 donated books (excluding event sources) to other organizations, schools and libraries across the country
-            (e.g. <a href="https://www.facebook.com/share/p/14ccs5ABmn/" target="_blank" rel="noopener noreferrer">here</a> and <a href="https://www.facebook.com/share/p/1ADAbLCLME/" target="_blank" rel="noopener noreferrer">here</a>).
+            <li class="target-item" data-note-id="dfb-note-1">
+                As a head librarian, I led a team of 15 members in managing the library's collection and data entry,
+                as well as coordinating the circulation of over 1,000 donated books (excluding event sources) to other organizations, schools and libraries across the country
+                (e.g. <a href="https://www.facebook.com/share/p/14ccs5ABmn/" target="_blank" rel="noopener noreferrer">here</a> and <a href="https://www.facebook.com/share/p/1ADAbLCLME/" target="_blank" rel="noopener noreferrer">here</a>).
             
-            During my term, we successfully managed over 6,322 book loans, served 3,168 book borrowers and welcomed 814 first-time readers, leveraging IF, IFNA, UNIQUE, COUNTIF and XLOOKUP functions for efficient data management.
-            <br>
-            For highlights and achievements, see our <a href="https://www.facebook.com/dfreebook/posts/pfbid0pbVKddDK9t2fSrz9miqCU1FhsDVEPeKn6NfmcoB3LaSRqsG5pGZZmC8Vy7JtQ1NMl" target="_blank" rel="noopener noreferrer">2024 DFB Wrapped</a>.
+                During my term, we successfully managed over 6,322 book loans, served 3,168 book borrowers and welcomed 814 first-time readers, leveraging IF, IFNA, UNIQUE, COUNTIF and XLOOKUP functions of Excel for efficient data management.
             </li>
 
             <li> We also collaborated with external relations and events departments to organize key library activities, including
-            <i>"<a href="https://www.facebook.com/share/v/1BJXdZYPCi/" target="_blank" rel="noopener noreferrer">Exchange Books for Trees</a>"</i>,
-            <i>"<a href="https://www.facebook.com/share/p/1GsrMBJorF/" target="_blank" rel="noopener noreferrer">Exchange Books for Flowers</a>"</i>,
-            <i>"<a href="https://www.facebook.com/share/p/18m1ikcNiR/" target="_blank" rel="noopener noreferrer">D Free Fair: Summer Garden</a>"</i>,
-            <i>"<a href="https://www.facebook.com/share/p/18iEuePvK6/" target="_blank" rel="noopener noreferrer">Bookshelves for Children</a>"</i>,
-            and the
-            <i>"<a href="https://www.facebook.com/share/p/1D5z7DWyXa/" target="_blank" rel="noopener noreferrer">Drawing Stories</a>"</i> writing contest.
-            These events attracted significant participation, helped raise funds for the library and resulted in the collection of over 1,070 books and the distribution of 2,907 books to primary and secondary school children in the highlands.
+                <i>"<a href="https://www.facebook.com/share/v/1BJXdZYPCi/" target="_blank" rel="noopener noreferrer">Exchange Books for Trees</a>"</i>,
+                <i>"<a href="https://www.facebook.com/share/p/1GsrMBJorF/" target="_blank" rel="noopener noreferrer">Exchange Books for Flowers</a>"</i>,
+                <i>"<a href="https://www.facebook.com/share/p/18m1ikcNiR/" target="_blank" rel="noopener noreferrer">D Free Fair: Summer Garden</a>"</i>,
+                <i>"<a href="https://www.facebook.com/share/p/18iEuePvK6/" target="_blank" rel="noopener noreferrer">Bookshelves for Children</a>"</i>,
+                and the
+                <i>"<a href="https://www.facebook.com/share/p/1D5z7DWyXa/" target="_blank" rel="noopener noreferrer">Drawing Stories</a>"</i> writing contest.
+                These events attracted significant participation, helped raise funds for the library and resulted in the collection of over 1,070 books and the distribution of 2,907 books to primary and secondary school children in the highlands.
             </li>
         </ul>
 
+        <hr class="new3">
+
     </div>
 
-    <hr>
+    </div>
 
 </body>
 

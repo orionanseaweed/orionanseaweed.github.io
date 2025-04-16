@@ -27,11 +27,13 @@
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="logo">Xuan Tung Hoang</div>
-
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
+        
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        
         <div class="nav-links">
-            <a href="index.html">About</a>
+            <a href="index.html" class="active">About</a>
             <a href="extendedcv.html">Extended CV</a>
             <a href="blog-en.html">Blog-en</a>
             <a href="blog-vi.html">Blog-vi</a>
@@ -40,6 +42,30 @@
         </div>
     </nav>
 
+    <script>
+        // Improved menu toggle function
+        function toggleMenu() {
+            var menu = document.querySelector(".nav-links");
+            if (menu.style.display === "flex") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "flex";
+            }
+        }
+        
+        // Add active class to current page
+        document.addEventListener("DOMContentLoaded", function() {
+            const currentPage = window.location.pathname.split("/").pop() || "index.html";
+            const navLinks = document.querySelectorAll(".nav-links a");
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute("href") === currentPage) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+    
     <!-- Wrapper for sidebar and content -->
     <div class="page-wrapper">
         <!-- Sidebar -->
