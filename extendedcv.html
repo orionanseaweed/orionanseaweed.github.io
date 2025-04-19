@@ -6,159 +6,12 @@
     <title>CV — Xuan Tung Hoang</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="figures/logo-and-ref-img/Stone-MinecraftWiki.png">
-    <link rel="stylesheet" href="style-index.css">
+    <link rel="stylesheet" href="style-cv.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .section {
-            margin-bottom: 5px;
-            position: relative;
-        }
-        .date {
-            float: right;
-            margin-left: 15px;
-            font-size: 1em;
-        }
-        .header {
-            font-size: 1em;
-            font-weight: 600;
-            margin-top: 15px;
-            margin-bottom: 15px;
-            padding-bottom: 0px;
-            text-decoration: none;
-            position: relative;
-        }
-        .sub-header {
-            font-size: 0.95em;
-            margin-top: 15px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-decoration: none;
-            position: relative;
-        }
-        p {
-            margin-top: 5px;
-            margin-bottom: 10px;
-            font-size: 0.95em;
-            line-height: 1.6;
-        }
-        /* Modified margin-note-1 class */
-        body {
-            position: relative; /* Makes body the positioning context */
-            overflow-x: hidden; /* Prevents horizontal scrolling */
-        }
-        
-        .container {
-            position: relative;
-            width: 70%; /* Reduce container width to make room for margin notes */
-        }
-        
-        /* Style for the external margin note */
-        .external-margin-note {
-            position: absolute;
-            right: calc(4% - 30px);
-            width: 280px;
-            font-size: 0.85em;
-            color: #555;
-            background: #f8f9fa;
-            padding: 8px;
-            border-left: 2px solid #3636ea;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            z-index: 100;
-        }        
-        
-        /* Adding a class to target specific list item */
-        .target-item {
-            position: relative; /* For position reference */
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 1024px) {
-            .container {
-                width: 90%; /* Expand container on smaller screens */
-            }
-            
-            .external-margin-note {
-                display: none;
-            }
-        }
-    </style>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            let postsContainer = document.getElementById("posts-container");
-            let posts = Array.from(document.querySelectorAll(".post"));
-            
-            posts.sort((a, b) => {
-                let dateA = new Date(a.dataset.date);
-                let dateB = new Date(b.dataset.date);
-                return dateB - dateA;
-            });
-            
-            posts.forEach(post => postsContainer.appendChild(post));
-        });
-
-        function filterByTag(tag) {
-            let posts = document.querySelectorAll('.post');
-            posts.forEach(post => {
-                if (tag === 'all' || post.dataset.tags.includes(tag)) {
-                    post.style.display = 'block';
-                } else {
-                    post.style.display = 'none';
-                }
-            });
-        }
-    </script>
-
-    <script>
-        function toggleMenu() {
-            var menu = document.querySelector(".nav-links");
-            if (menu.style.display === "flex") {
-                menu.style.display = "none";
-            } else {
-                menu.style.display = "flex";
-            }
-        }
-    </script>
-</head>
-
-<body>
-
-    <!-- Margin notes -->
-    <div id="cv-note-1" class="external-margin-note">
-        📌 This is an extended version of my CV.
-        <br> The shorter official one is available <a href="/CV-HXT.pdf" target="_blank" rel="noopener noreferrer">here</a>.
-        <br>
-    </div>
-
-    <div id="edu-note-1" class="external-margin-note">
-        I'm seeking for postgraduate opportunities 🎇
-    </div>
-
-    <div id="xpho-note-1" class="external-margin-note">
-        📁 Supplementary material (YTB):
-        <br>
-        <a href="https://youtube.com/playlist?list=PLhxSjdZcwo54Z0fqHABfHZgvR6L8xHiZ6&si=RUokEfTpAwF9GVwW" target="_blank" rel="noopener noreferrer">xPhO's astronomy presentation playlist</a>.
-    </div>
-
-    <div id="xpho-note-2-savelyev" class="external-margin-note">
-        📁 Supplementary material (GitHub):
-        <br>
-        <a href="https://github.com/Duy247/savelyev_1/tree/main" target="_blank" rel="noopener noreferrer">Savelyev Project</a> - draft version.
-    </div>
-
-    <div id="dfb-note-1" class="external-margin-note">
-        ✨ For highlights and achievements, see our:
-        <br>
-        <a href="https://www.facebook.com/dfreebook/posts/pfbid0pbVKddDK9t2fSrz9miqCU1FhsDVEPeKn6NfmcoB3LaSRqsG5pGZZmC8Vy7JtQ1NMl" target="_blank" rel="noopener noreferrer">2024 DFB Wrapped</a> (FB).
-        <br>
-    </div>
-
-    <script>
-        // Position all margin notes next to their respective target items
-        document.addEventListener("DOMContentLoaded", function() {
-            // Function to position a note next to its target
+            // Position all margin notes next to their respective target items
             function positionNote(noteId, targetElement) {
                 const note = document.getElementById(noteId);
                 
@@ -194,14 +47,68 @@
             
             window.addEventListener('resize', updatePositions);
             window.addEventListener('scroll', updatePositions);
+            
+            // Menu toggle function
+            const menuToggle = document.querySelector(".menu-toggle");
+            const navLinks = document.querySelector(".nav-links");
+            
+            if (menuToggle) {
+                menuToggle.addEventListener("click", function() {
+                    if (navLinks.style.display === "flex") {
+                        navLinks.style.display = "none";
+                    } else {
+                        navLinks.style.display = "flex";
+                    }
+                });
+            }
+            
+            // Add active class to current page
+            const currentPage = window.location.pathname.split("/").pop() || "index.html";
+            const navLinkElements = document.querySelectorAll(".nav-links a");
+            
+            navLinkElements.forEach(link => {
+                if (link.getAttribute("href") === currentPage) {
+                    link.classList.add("active");
+                }
+            });
         });
     </script>
+</head>
+
+<body>
+    <!-- Margin notes -->
+    <div id="cv-note-1" class="external-margin-note">
+        📌 This is an extended version of my CV.
+        <br> The shorter official one is available <a href="pdf/CV-HXT.pdf" target="_blank" rel="noopener noreferrer">here</a>.
+    </div>
+
+    <div id="edu-note-1" class="external-margin-note">
+        I'm seeking for postgraduate opportunities 🎇
+    </div>
+
+    <div id="xpho-note-1" class="external-margin-note">
+        📁 Supplementary material (YTB):
+        <br>
+        <a href="https://youtube.com/playlist?list=PLhxSjdZcwo54Z0fqHABfHZgvR6L8xHiZ6&si=RUokEfTpAwF9GVwW" target="_blank" rel="noopener noreferrer">xPhO's astronomy presentation playlist</a>.
+    </div>
+
+    <div id="xpho-note-2-savelyev" class="external-margin-note">
+        📁 Supplementary material (GitHub):
+        <br>
+        <a href="https://github.com/Duy247/savelyev_1/tree/main" target="_blank" rel="noopener noreferrer">Savelyev Project</a> - draft version.
+    </div>
+
+    <div id="dfb-note-1" class="external-margin-note">
+        ✨ For highlights and achievements, see our:
+        <br>
+        <a href="https://www.facebook.com/dfreebook/posts/pfbid0pbVKddDK9t2fSrz9miqCU1FhsDVEPeKn6NfmcoB3LaSRqsG5pGZZmC8Vy7JtQ1NMl" target="_blank" rel="noopener noreferrer">2024 DFB Wrapped</a> (FB).
+    </div>
 
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="logo">Xuan Tung Hoang</div>
         
-        <div class="menu-toggle" onclick="toggleMenu()">
+        <div class="menu-toggle">
             <i class="fas fa-bars"></i>
         </div>
         
@@ -215,186 +122,161 @@
         </div>
     </nav>
 
-    <script>
-        // Improved menu toggle function
-        function toggleMenu() {
-            var menu = document.querySelector(".nav-links");
-            if (menu.style.display === "flex") {
-                menu.style.display = "none";
-            } else {
-                menu.style.display = "flex";
-            }
-        }
-        
-        // Add active class to current page
-        document.addEventListener("DOMContentLoaded", function() {
-            const currentPage = window.location.pathname.split("/").pop() || "index.html";
-            const navLinks = document.querySelectorAll(".nav-links a");
-            
-            navLinks.forEach(link => {
-                if (link.getAttribute("href") === currentPage) {
-                    link.classList.add("active");
-                }
-            });
-        });
-    </script>
-    
     <!-- Main Content -->
     <div class="container">
-
-    <!-- Title -->
-    <h1 class="title, target-item" data-note-id="cv-note-1" style="text-align: left; margin-left: 0;">Xuan Tung Hoang</h1>
-
-    <p class="content">
-        <strong>Email:</strong> hxtunq [at] gmail [dot] com or concealedcharacterx [at] gmail [dot] com  
-    </p>
-
-    <p class="content">
-        <strong>Networks: </strong>
-        <a href="https://www.linkedin.com/in/hxtung/" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
-        <a href="https://github.com/orionanseaweed" target="_blank" rel="noopener noreferrer">GitHub</a> |
-        <a href="orionanseaweed.github.io">Website</a>
-    </p>
-
-    <hr class="new3">
-
-    <div class="section">
-
-        <div class="header">
-            <h2>Experiences</h2>
-        </div>
-
-        <div class="sub-header">
-            <h3 style="font-weight: normal;">Microbial Ecology Laboratory</h3>
-            <span class="date">Oct. 2024 — Jul. 2026</span>
-        </div>
-
-        <p class="indent">Undergraduate research under the guidance of
-            <a href="https://scls.hust.edu.vn/en/organs/person/Department-of-Bioengineering-6/Dr-Dam-Thuy-Hang-94/" target="_blank" rel="noopener noreferrer">
-                Dr. Dam Thuy Hang.
-            </a>
-        </p>
-
-    </div>
-
-    <hr class="new3">
-
-    <div class="section">
-
-        <div class="header">
-            <h2> Education </h2>
-        </div>
-
-        <div class="sub-header">
-            <h3 style="font-weight: normal;">Hanoi University of Science and Technology</h3>
-            <span class="date">Sep. 2021 — Jul. 2026</span>
-        </div>
-
-        <p class="indent,  target-item" data-note-id="edu-note-1">B.S. in Biological Engineering</p>
-
-    </div>
-
-    <hr class="new3">
-
-    <div class="section">
-
-        <div class="header">
-            <h2>Certification</h2>
-        </div>
-
-        <div class="sub-header">
-            <h3 style="font-weight: normal;">Courses</h3>
-        </div>
-
-        <ol>
-            <li>
-                Astrobiology and the Search for Extraterrestrial Life
-                (<a href="https://www.coursera.org/account/accomplishments/verify/YYA4C7ISNS6A" target="_blank" rel="noopener noopener">Show credential</a>)
-            </li>
-
-            <li>
-                Marine Biology
-                (<a href="https://www.coursera.org/account/accomplishments/verify/X7HOYFOKDUUO" target="_blank" rel="noopener noopener">Show credential</a>)
-            </li>
-        </ol>
-
-        <div class="sub-header">
-            <h3 style="font-weight: normal;">Specialization</h3>
-        </div>
-
-        <ol>
-            <li>Data Visualization & Dashboarding with R (<a href="https://www.coursera.org/account/accomplishments/verify/YLAB87329FZT" target="_blank" rel="noopener noopener">Show credential</a>)
-            </li>
-        </ol>
-        
-    </div>
-
-    <hr class="new3">
-
-    <div class="section">
-
-        <div class="header">
-            <h2> Volunteering </h2>
-        </div>
-
-            <div class="sub-header">
-                <h3 style="font-weight: normal;">Les Misérable at <a href="https://www.facebook.com/xPhO.org" target="_blank" rel="noopener noreferrer">xPhO Physics Club</a></h3>
-                <span class="date">Jul. 2022 — now</span>
+        <!-- Profile Section -->
+        <div class="section-card profile-section">
+            <h1 class="target-item" data-note-id="cv-note-1" style="font-size: 24px; margin-bottom: 12px;">Xuan Tung Hoang</h1>
+            
+            <div class="profile-info">
+                <div class="contact-info">
+                    <strong>Email:</strong> hxtunq [at] gmail [dot] com or concealedcharacterx [at] gmail [dot] com
+                </div>
+                
+                <div class="networks">
+                    <strong>Networks: </strong>
+                    <a href="https://www.linkedin.com/in/hxtung/" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+                    <a href="https://github.com/orionanseaweed" target="_blank" rel="noopener noreferrer">GitHub</a> |
+                    <a href="orionanseaweed.github.io">Website</a>
+                </div>
             </div>
         </div>
 
-        <ul>
-            <li class="target-item" data-note-id="xpho-note-1">
-                Since entering xPhO in 2022, I gradually became more engaged in discussions on astronomy, eventually expanding into other branches of physics and sciences in general.
-                Through these conversations, I had the chance to connect with many talented individuals and gain insights from their inspiring academic journeys.
-                It is no exaggeration to say that this was the moment when my mind truly began to embrace and shape the passion for scientific pursuit that would stay with me for years to come.
-            </li>
-        
-            <li class="target-item" data-note-id="xpho-note-2-savelyev">
-                In early 2023, I joined the project "LaTeX Revision of I. V. Savelyev's Physics: A General Course",
-                working on revising Volume I and translating Volume II of this classic textbook. Around that time, I officially took on the role of a technician.
-                Our goal was to make fundamental and valuable physics resources more accessible to Vietnamese high school students and physics enthusiasts.
-            </li>
-
-        </ul>
-
-
-        <div class="sub-header">
-            <h3 style="font-weight: normal;"> Head Librarian at <a href="https://dfreebook.com/" target="_blank" rel="noopener noreferrer">D Free Book</a></h3>
-            <span class="date"> Dec. 2023 — Nov. 2024 </span>
+        <!-- Experiences Section -->
+        <div class="section-card">
+            <div class="section-header">
+                <h2>Experiences</h2>
+            </div>
+            
+            <div class="item">
+                <div class="item-header">
+                    <h3 class="item-title">Microbial Ecology Laboratory</h3>
+                    <span class="date">Oct. 2024 — Jul. 2026</span>
+                </div>
+                
+                <div class="item-description">
+                    Undergraduate research under the guidance of
+                    <a href="https://scls.hust.edu.vn/en/organs/person/Department-of-Bioengineering-6/Dr-Dam-Thuy-Hang-94/" target="_blank" rel="noopener noreferrer">
+                        Dr. Dam Thuy Hang.
+                    </a>
+                </div>
+            </div>
         </div>
 
-        <ul>
-            <li>
-                As a member, I contributed to the operation and maintained the gentle beauty of DFB, assisted with book organization and borrower support
-                while helping to promote reading and foster trust within the community.
-            </li>
+        <!-- Education Section -->
+        <div class="section-card">
+            <div class="section-header target-item" data-note-id="edu-note-1">
+                <h2>Education</h2>
+            </div>
+                
+            <div class="item">
+                <div class="item-header">
+                    <h3 class="item-title">Hanoi University of Science and Technology</h3>
+                    <span class="date">Sep. 2021 — Jul. 2026</span>
+                </div>
+                
+                <div class="item-description">
+                    B.S. in Biological Engineering
+                </div>
+            </div>
+        </div>
 
-            <li class="target-item" data-note-id="dfb-note-1">
-                As a head librarian, I led a team of 15 members in managing the library's collection and data entry,
-                as well as coordinating the circulation of over 1,000 donated books (excluding event sources) to other organizations, schools and libraries across the country
-                (e.g. <a href="https://www.facebook.com/share/p/14ccs5ABmn/" target="_blank" rel="noopener noreferrer">here</a> and <a href="https://www.facebook.com/share/p/1ADAbLCLME/" target="_blank" rel="noopener noreferrer">here</a>).
+        <!-- Certification Section -->
+        <div class="section-card">
+            <div class="section-header">
+                <h2>Certification</h2>
+            </div>
             
-                During my term, we successfully managed over 6,322 book loans, served 3,168 book borrowers and welcomed 814 first-time readers, leveraging IF, IFNA, UNIQUE, COUNTIF and XLOOKUP functions of Excel for efficient data management.
-            </li>
+            <div class="item">
+                <div class="item-header">
+                    <h3 class="item-title">Life Sciences</h3>
+                </div>
+                
+                <ol>
+                    <li>
+                        Astrobiology and the Search for Extraterrestrial Life
+                        (<a href="https://www.coursera.org/account/accomplishments/verify/YYA4C7ISNS6A" target="_blank" rel="noopener noopener">Show credential</a>)
+                    </li>
 
-            <li> We also collaborated with external relations and events departments to organize key library activities, including
-                <i>"<a href="https://www.facebook.com/share/v/1BJXdZYPCi/" target="_blank" rel="noopener noreferrer">Exchange Books for Trees</a>"</i>,
-                <i>"<a href="https://www.facebook.com/share/p/1GsrMBJorF/" target="_blank" rel="noopener noreferrer">Exchange Books for Flowers</a>"</i>,
-                <i>"<a href="https://www.facebook.com/share/p/18m1ikcNiR/" target="_blank" rel="noopener noreferrer">D Free Fair: Summer Garden</a>"</i>,
-                <i>"<a href="https://www.facebook.com/share/p/18iEuePvK6/" target="_blank" rel="noopener noreferrer">Bookshelves for Children</a>"</i>,
-                and the
-                <i>"<a href="https://www.facebook.com/share/p/1D5z7DWyXa/" target="_blank" rel="noopener noreferrer">Drawing Stories</a>"</i> writing contest.
-                These events attracted significant participation, helped raise funds for the library and resulted in the collection of over 1,070 books and the distribution of 2,907 books to primary and secondary school children in the highlands.
-            </li>
-        </ul>
+                    <li>
+                        Marine Biology
+                        (<a href="https://www.coursera.org/account/accomplishments/verify/X7HOYFOKDUUO" target="_blank" rel="noopener noopener">Show credential</a>)
+                    </li>
+                </ol>
+            </div>
+            
+            <div class="item" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+                <div class="item-header">
+                    <h3 class="item-title">Data Science & Programming</h3>
+                </div>
+                
+                <ol>
+                    <li>Data Visualization & Dashboarding with R Specialization (<a href="https://www.coursera.org/account/accomplishments/verify/YLAB87329FZT" target="_blank" rel="noopener noopener">Show credential</a>)
+                    </li>
+                </ol>
+            </div>
+        </div>
 
-        <hr class="new3">
+        <!-- Volunteering Section -->
+        <div class="section-card">
+            <div class="section-header">
+                <h2>Volunteering</h2>
+            </div>
+            
+            <div class="item">
+                <div class="item-header">
+                    <h3 class="item-title">Les Misérable at <a href="https://www.facebook.com/xPhO.org" target="_blank" rel="noopener noreferrer">xPhO Physics Club</a></h3>
+                    <span class="date">Jul. 2022 — now</span>
+                </div>
+                
+                <ul>
+                    <li class="target-item" data-note-id="xpho-note-1">
+                        Since entering xPhO in 2022, I gradually became more engaged in discussions on astronomy, eventually expanding into other branches of physics and sciences in general.
+                        Through these conversations, I had the chance to connect with many talented individuals and gain insights from their inspiring academic journeys.
+                        It is no exaggeration to say that this was the moment when my mind truly began to embrace and shape the passion for scientific pursuit that would stay with me for years to come.
+                    </li>
+                
+                    <li class="target-item" data-note-id="xpho-note-2-savelyev">
+                        In early 2023, I joined the project "LaTeX Revision of I. V. Savelyev's Physics: A General Course",
+                        working on revising Volume I and translating Volume II of this classic textbook. Around that time, I officially took on the role of a technician.
+                        Our goal was to make fundamental and valuable physics resources more accessible to Vietnamese high school students and physics enthusiasts.
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="item" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+                <div class="item-header">
+                    <h3 class="item-title">Head Librarian at <a href="https://dfreebook.com/" target="_blank" rel="noopener noreferrer">D Free Book</a></h3>
+                    <span class="date">Dec. 2023 — Nov. 2024</span>
+                </div>
+                
+                <ul>
+                    <li>
+                        As a member, I contributed to the operation and maintained the gentle beauty of DFB, assisted with book organization and borrower support
+                        while helping to promote reading and foster trust within the community.
+                    </li>
 
+                    <li class="target-item" data-note-id="dfb-note-1">
+                        As a leader,I led a team of 15 members in managing the library's collection and data entry,
+                        as well as coordinating the circulation of over 1,000 donated books (excluding event sources) to other organizations, schools and libraries across the country
+                        (e.g. <a href="https://www.facebook.com/share/p/14ccs5ABmn/" target="_blank" rel="noopener noreferrer">here</a> and <a href="https://www.facebook.com/share/p/1ADAbLCLME/" target="_blank" rel="noopener noreferrer">here</a>).
+                    
+                        During my term, we successfully managed over 6,322 book loans, 3,168 book borrowers and welcomed 814 first-time readers, leveraging IF(NA), UNIQUE, COUNTIF and XLOOKUP functions of Excel for efficient data management.
+                    </li>
+
+                    <li>
+                        We also collaborated with external relations and events departments to organize key library activities, including
+                        <i>"<a href="https://www.facebook.com/share/v/1BJXdZYPCi/" target="_blank" rel="noopener noreferrer">Exchange Books for Trees</a>"</i>,
+                        <i>"<a href="https://www.facebook.com/share/p/1GsrMBJorF/" target="_blank" rel="noopener noreferrer">Exchange Books for Flowers</a>"</i>,
+                        <i>"<a href="https://www.facebook.com/share/p/18m1ikcNiR/" target="_blank" rel="noopener noreferrer">D Free Fair: Summer Garden</a>"</i>,
+                        <i>"<a href="https://www.facebook.com/share/p/18iEuePvK6/" target="_blank" rel="noopener noreferrer">Bookshelves for Children</a>"</i>,
+                        and the
+                        <i>"<a href="https://www.facebook.com/share/p/1D5z7DWyXa/" target="_blank" rel="noopener noreferrer">Drawing Stories</a>"</i> writing contest.
+                        These events attracted significant participation, helped raise funds for the library and resulted in the collection of over 1,070 books and the distribution of 2,907 books to primary and secondary school children in the highlands.
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-
-    </div>
-
 </body>
-
 </html>
