@@ -88,6 +88,12 @@ body {
     align-items: center; /* Center children horizontally */
     position: relative;
     overflow-x: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+body.loaded {
+    opacity: 1;
 }
 
 /* Navbar */
