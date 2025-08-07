@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-# ---- 1、基本配置
+# ---- 1、General Information
 
 title: Xuan Tung Hoang
 SEOTitle: Xuan Tung Hoang 
@@ -26,20 +26,22 @@ url: "http://orionanseaweed.github.io"
 baseurl: ""
 github_repo: "https://github.com/orionanseaweed/orionanseaweed.github.io.git" 
 
-# ---- 2、侧边栏配置
+# ---- 2、Sidebar
 
-sidebar: true # 是否使用侧边栏（头像，简介...），看个人喜好吧，我这里启用
-sidebar-about-description: "Write yourself description" # 你的简介，如果上面设置false，这里可不填
+sidebar: true
+sidebar-about-description: "Write yourself description"
 sidebar-avatar: /img/my_pic.jpeg
 
-# ---- 3、社交账号配置
+# ---- 3、Social Media
 
 RSS: false 
 
 github_username:    orionanseaweed    
-facebook_username:  hxtunq      
+facebook_username:  hxtunq
+linkedin_username:  hxtung
+instagram_username: lemarid_an    
 
-# 个性标签（Featured Tags）
+# Featured Tags
 
 featured-tags: true               # 
 featured-condition-size: 1        # 
@@ -48,12 +50,8 @@ featured-condition-size: 1        #
 
 friends: [
     {
-        title: "Foo Blog",              # 要显示的名称
+        title: "Foo Blog",             
         href: "http://foo.github.io/"  
-    },
-    {
-        title: "Bar Blog",              # 要显示的名称
-        href: "http://bar.github.io"   
     }
 ]
 
