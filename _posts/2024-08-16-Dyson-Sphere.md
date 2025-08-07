@@ -3,7 +3,7 @@ layout:     post
 title:      Dyson Sphere
 subtitle:    "\"Blog:recond your life\""
 date:       2024-08-16
-author:     <Little Fried Egg>
+author:     Kane
 header-img: img/post-bg-coffee.jpeg
 catalog: true
 tags:
@@ -36,9 +36,9 @@ But outside there: Jupiter contains about 2.10<sup>30</sup> grams of available m
 
 The same toughness might likely be questioned for any similar civilization. The idea of the development of a large shell that could entirely surround the star of that civilization is born; that shell's mission is to absorb energy emitted from the stars and allow the beings to use that energy. And it's known as the Dyson Sphere.
 
-References
+## References
 
 <p>
-    <span style="color: #FF0000">[1]</span> Dyson F. J. (1960). Search for Artificial Stellar Sources of Infrared Radiation. Science (New York, N.Y.), 131(3414), 1667-1668. DOI: <a href="https://doi.org/10.1126/science.131.3414.1667" target="_blank" rel="noopener noreferrer">doi.org/10.1126/science.131.3414.1667</a>.
+    <span style="color: #FF0000">[1]</span> Dyson F. J. (1960). Search for Artificial Stellar Sources of Infrared Radiation. Science, 131(3414), 1667-1668. DOI: <a href="https://doi.org/10.1126/science.131.3414.1667" target="_blank" rel="noopener noreferrer">doi.org/10.1126/science.131.3414.1667</a>.
 </p>
 
