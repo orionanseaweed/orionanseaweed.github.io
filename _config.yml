@@ -30,7 +30,7 @@ github_repo: "https://github.com/orionanseaweed/orionanseaweed.github.io.git"
 
 sidebar: true # 是否使用侧边栏（头像，简介...），看个人喜好吧，我这里启用
 sidebar-about-description: "Write yourself description" # 你的简介，如果上面设置false，这里可不填
-sidebar-avatar: /img/your_head_icon.png # 你的头像图片的地址
+sidebar-avatar: /img/my_pic.jpeg
 
 # ---- 3、社交账号配置
 
