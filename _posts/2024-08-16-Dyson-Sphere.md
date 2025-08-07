@@ -11,7 +11,7 @@ tags:
     - Life Detection
 ---
 
-Even a normal kid or anyone just once watching the Marvel series or Star Wars can imagine a perspective outside our planet in that immensity universe.Exoplanet citizens with a big head? Numerous spaceships that contain a whole country, wander between stars? Or the parent planet with many skyscraper buildings, everywhere are robotics and automatication?
+Even a normal kid or anyone just once watching the Marvel series or Star Wars can imagine a perspective outside our planet in that immensity universe. Exoplanet citizens with a big head? Numerous spaceships that contain a whole country, wander between stars? Or the parent planet with many skyscraper buildings, everywhere are robotics and automatication?
 
 The realm of imagination is a wonderland, but that is also where most of us stopped—we have reached our limitations—we can't prove it. Freeman Dyson is in the minority, and his unique arguments that are provided in an article, "Search for Artificial Stellar Sources of Infrared Radiation", impressed me greatly. It's not only a normal report with some "strange" thoughts, but also an inner voice that I, us, want to share with the world.
 
