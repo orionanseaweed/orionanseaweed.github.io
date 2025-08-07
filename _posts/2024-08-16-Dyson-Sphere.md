@@ -19,7 +19,7 @@ The realm of imagination is a wonderland, but that is also where most of us stop
 
 As Dyson mentioned in his report, Malthus principles talk about the growth of population, which is increasing at a potentially exponential rate, while resources and energy are only increasing in an arithmetic progression.
 
-It's led to the Malthusian catastrophe: famine and war, resulting in poverty and depopulation. Dyson pointed out that
+It's led to the Malthusian catastrophe: famine and war, resulting in poverty and depopulation. Dyson pointed out that:
 
 <ul>
     <li>

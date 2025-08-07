@@ -28,9 +28,8 @@ github_repo: "https://github.com/orionanseaweed/orionanseaweed.github.io.git"
 
 # ---- 2、Sidebar
 
-sidebar: true
+sidebar: false
 sidebar-about-description: "Incoming biologist."
-sidebar-avatar: /img/my_pic.jpeg
 
 # ---- 3、Social Media
 
