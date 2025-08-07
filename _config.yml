@@ -17,7 +17,7 @@
 # ---- 1、General Information
 
 title: Xuan Tung Hoang
-SEOTitle: Xuan Tung Hoang 
+SEOTitle: Xuan Tung Hoang
 header-img: img/home-bg.jpg
 email: concealedcharacterx@gmail.com
 description: "Every failure is leading towards success."
@@ -29,7 +29,7 @@ github_repo: "https://github.com/orionanseaweed/orionanseaweed.github.io.git"
 # ---- 2、Sidebar
 
 sidebar: true
-sidebar-about-description: "Write yourself description"
+sidebar-about-description: "Science enthusiast, incoming biologist."
 sidebar-avatar: /img/my_pic.jpeg
 
 # ---- 3、Social Media
