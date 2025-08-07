@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Dyson Sphere
-subtitle:    "\"Blog:recond your life\""
+subtitle:   
 date:       2024-08-16
 author:     Kane
 header-img: img/post-bg-coffee.jpeg
