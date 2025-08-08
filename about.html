@@ -5,80 +5,387 @@ description: ""
 header-img: "img/home-bg.jpg"
 ---
 
-<!-- Page Header -->
-<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading" id="tag-heading">
-                    <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
-                    <span class="subheading">{{ page.description }}</span>
+<style>
+/* Custom CSS for the new about page layout */
+.page-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background: #f8f9fa;
+    margin-top: 60px; /* Account for fixed navbar */
+}
+
+.sidebar {
+    width: 300px;
+    background: white;
+    padding: 2rem;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    position: fixed;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    top: 60px; /* Position below navbar */
+}
+
+.sidebar-profile-img {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.sidebar-profile-img img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #e9ecef;
+}
+
+.sidebar-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.sidebar-tag {
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-divider {
+    height: 1px;
+    background: #e9ecef;
+    margin: 1.5rem 0;
+}
+
+.sidebar-contact-info {
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.sidebar-icon {
+    font-size: 1.2rem;
+    margin-right: 0.75rem;
+    margin-top: 0.1rem;
+}
+
+.sidebar-contact-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-contact-value {
+    font-size: 0.9rem;
+    color: #333;
+    line-height: 1.4;
+}
+
+.sidebar-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.sidebar-social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #f8f9fa;
+    border-radius: 50%;
+    color: #666;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.sidebar-social-icon:hover {
+    background: #007bff;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.container {
+    flex: 1;
+    margin-left: 300px;
+    padding: 3rem;
+    max-width: 800px;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem 0;
+    color: #333;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.5rem;
+}
+
+.content {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.content a {
+    color: #007bff;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.3s ease;
+}
+
+.content a:hover {
+    border-bottom: 1px solid #007bff;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .page-wrapper {
+        flex-direction: column;
+        margin-top: 60px;
+    }
+    
+    .sidebar {
+        width: 100%;
+        position: relative;
+        height: auto;
+        padding: 1.5rem;
+        top: 0;
+    }
+    
+    .container {
+        margin-left: 0;
+        padding: 1.5rem;
+    }
+    
+    .sidebar-profile-img img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .sidebar-name {
+        font-size: 1.2rem;
+    }
+}
+
+/* Navigation styles */
+.navbar {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 60px;
+}
+
+.navbar-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #666;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #007bff;
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 2rem;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .nav-links.open {
+        display: flex;
+    }
+}
+</style>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="navbar-wrapper">
+        <a href="{{ site.baseurl }}/" class="logo">{{ site.title }}</a>
+        <div class="menu-toggle" id="menuToggleBtn">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="{{ site.baseurl }}/">Blog</a>
+            <a href="{{ site.baseurl }}/about.html" class="active">About</a>
+            <a href="{{ site.baseurl }}/contact.html">Contact</a>
+            {% for page in site.pages %}{% if page.title and page.title != "About" and page.title != "Contact" %}
+            <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+            {% endif %}{% endfor %}
+        </div>
+    </div>
+</nav>
+
+<script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById("menuToggleBtn");
+    const navLinks = document.getElementById("navLinks");
+    
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", function() {
+            navLinks.classList.toggle("open");
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener("click", function(e) {
+            if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove("open");
+            }
+        });
+    }
+</script>
+
+<div class="page-wrapper">
+    <div class="sidebar">
+        <div class="sidebar-profile-img">
+            <img src="{{ site.baseurl }}/img/Stone-MinecraftWiki.png" alt="Profile Picture">
+        </div>
+        <div class="sidebar-name">Hoang Xuan Tung</div>
+        <div class="sidebar-tag">Science Enthusiast</div>
+        
+        <div class="sidebar-divider"></div>
+        
+        <div class="sidebar-contact-info">
+            <div class="sidebar-contact-item">
+                <div class="sidebar-icon">✉</div>
+                <div>
+                    <div class="sidebar-contact-label">EMAIL</div>
+                    <div class="sidebar-contact-value">hxtunq [at] gmail [dot] com</div>
+                </div>
+            </div>
+
+            <div class="sidebar-contact-item">
+                <div class="sidebar-icon">🔬</div>
+                <div>
+                    <div class="sidebar-contact-label">RESEARCH</div>
+                    <div class="sidebar-contact-value">Biology, Astrobiology, Geology</div>
+                </div>
+            </div>
+            
+            <div class="sidebar-contact-item">
+                <div class="sidebar-icon">🏢</div>
+                <div>
+                    <div class="sidebar-contact-label">LOCATION</div>
+                    <div class="sidebar-contact-value">Vietnam</div>
                 </div>
             </div>
         </div>
-    </div>
-</header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <!-- English Version -->
-            <div class="en post-container">
-                <p>Hi, I am Hoang Xuan Tung, you can call me Kane.</p>
+        <div class="sidebar-divider"></div>
                 
-                <p>I am a science enthusiast. I love biology, astrobiology, geology and beyond.</p>
-
-                <p>You can see more about me <a href="https://hxtunq.github.io/index.html" target="_blank" rel="noopener noreferrer">here</a>. </p>
-            </div>
+        <div class="sidebar-social-links">
+            <a href="https://github.com/orionanseaweed" target="_blank" class="sidebar-social-icon">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/hxtung/" target="_blank" class="sidebar-social-icon">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.flickr.com/photos/196824145@N03/" target="_blank" class="sidebar-social-icon">
+                <i class="fab fa-flickr"></i>
+            </a>
+            <a href="https://www.instagram.com/lemarid_an/" target="_blank" class="sidebar-social-icon">
+                <i class="fab fa-instagram"></i>
+            </a>
         </div>
     </div>
-</div>
 
-<!-- Gitalk 评论 start  -->
-{% if site.gitalk.enable %}
-<!-- Gitalk link  -->
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Salutations to the world. Let's make today meaningful! 🌇</h1>
+        
+        <h2 class="section-title">About me</h2>
+        <p class="content">
+            Hi, I am Hoang Xuan Tung, you can call me Kane. I am a science enthusiast. I love biology, astrobiology, geology and beyond.
+        </p>
+        
+        <p class="content">
+            I'm an undergraduate majoring in Biological engineering at the School of Chemistry and Life Sciences<sup><a href="https://scls.hust.edu.vn/" target="_blank" rel="noopener noreferrer">[url]</a></sup>,
+            Hanoi University of Science and Technology, Vietnam.
+            Throughout my journey, I've been fortunate to be surrounded by inspiring mentors and talented peers, which has fueled my deep passion for various scientific fields, especially
+            <a href="https://en.wikipedia.org/wiki/Microbiology" target="_blank" rel="noopener noreferrer">microbiology</a> and <a href="https://astrobiology.nasa.gov/about/" target="_blank" rel="noopener noreferrer">astrobiology</a>.
+        </p>
 
-<div id="gitalk-container"></div>
-    <script type="text/javascript">
-    var gitalk = new Gitalk({
-    clientID: '{{site.gitalk.clientID}}',
-    clientSecret: '{{site.gitalk.clientSecret}}',
-    repo: '{{site.gitalk.repo}}',
-    owner: '{{site.gitalk.owner}}',
-    admin: ['{{site.gitalk.admin}}'],
-    distractionFreeMode: {{site.gitalk.distractionFreeMode}},
-    id: 'about',
-    });
-    gitalk.render('gitalk-container');
-</script>
-{% endif %}
-<!-- Gitalk end -->
+        <h2 class="section-title">Research & Vision</h2>
+        <p class="content">
+            My research interests focus on the identification and preservation of microbial strains, microbial diversity, metagenomics, genome breeding, and systems metabolic engineering.
+            I am also interested in applying biological approaches to tackle questions at the intersection of biology and other disciplines, including astrobiology, biophysics, environmental biology, evolutionary biology, and geomicrobiology.
+        </p>
 
- <!-- disqus 评论框 start  -->
-{% if site.disqus.enable %}
+        <h2 class="section-title">Miscellaneous</h2>
+        <p class="content">
+            In my spare time, I often immerse myself in books and <a href="https://open.spotify.com/playlist/1Vpenzl2qq0ya9ipYPRt40?si=4abd837320504070" target="_blank" rel="noopener noreferrer">musics</a>, play badminton, or go trekking.
+        </p>
+            
+        <p class="content">
+            I also sometimes play video games, one of my most memorable moments was winning the
+            <a href="https://www.facebook.com/photo/?fbid=814806730645507&set=pcb.814827817310065" target="_blank" rel="noopener noreferrer">gold medal</a>
+            in Arena of Valor category at Elympics 2023 (<a href="https://www.facebook.com/FOCVNNTU" target="_blank" rel="noopener noreferrer">FOC-VNNTU</a>) 
+            with my amazing teammates.
+        </p>
 
-<div class="comment">
-    <div id="disqus_thread" class="disqus-thread">
+        <p class="content">
+            You can see more about me <a href="https://hxtunq.github.io/index.html" target="_blank" rel="noopener noreferrer">here</a>.
+        </p>
+
+        <p style="color: #666; font-size: 0.8rem; margin-top: 3rem;">2025 © Hoang Xuan Tung</p>
     </div>
 </div>
-<!-- disqus 评论框 end -->
 
-<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = "{{site.disqus.username}}";
-    var disqus_identifier = "{{site.disqus.username}}/{{page.url}}";
-    var disqus_url = "{{site.url}}{{page.url}}";
-
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<!-- disqus 公共JS代码 end -->
-{% endif %}
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
