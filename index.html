@@ -59,7 +59,7 @@ description: ""
     </div>
     {% endif %}
 </div>
-<hr>
+<hr class="post-divider">
 {% endfor %}
 
 <!-- Pager -->
@@ -100,18 +100,31 @@ document.addEventListener('DOMContentLoaded', function() {
             // Filter posts with fade effect
             postItems.forEach(post => {
                 const postTags = post.getAttribute('data-tags').split(',');
+                const postDivider = post.nextElementSibling;
                 
                 if (selectedTag === 'all' || postTags.includes(selectedTag)) {
                     post.style.display = 'block';
+                    if (postDivider && postDivider.classList.contains('post-divider')) {
+                        postDivider.style.display = 'block';
+                    }
                     setTimeout(() => {
                         post.style.opacity = '1';
                         post.style.transform = 'translateY(0)';
+                        if (postDivider && postDivider.classList.contains('post-divider')) {
+                            postDivider.style.opacity = '1';
+                        }
                     }, 10);
                 } else {
                     post.style.opacity = '0';
                     post.style.transform = 'translateY(-10px)';
+                    if (postDivider && postDivider.classList.contains('post-divider')) {
+                        postDivider.style.opacity = '0';
+                    }
                     setTimeout(() => {
                         post.style.display = 'none';
+                        if (postDivider && postDivider.classList.contains('post-divider')) {
+                            postDivider.style.display = 'none';
+                        }
                     }, 300);
                 }
             });
@@ -176,6 +189,11 @@ document.addEventListener('DOMContentLoaded', function() {
     font-size: 12px;
     font-weight: 400;
     text-align: right;
+}
+
+.post-divider {
+    transition: opacity 0.3s ease;
+    opacity: 1;
 }
 
 .post-item {
