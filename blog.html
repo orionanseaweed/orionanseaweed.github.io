@@ -5,6 +5,27 @@ description: ""
 header-img: "img/home-bg.jpg"
 ---
 
+<!-- Page Header -->
+<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading" id="tag-heading">
+                    <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+                    <span class="subheading">{{ page.description }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <!-- English Version -->
+            <div class="en post-container">
+
 <!-- Tag Filter Section -->
 <div class="tag-filter-section">
     <h4 style="margin-bottom: 15px; color: #333;">Filter by Tags:</h4>
@@ -66,6 +87,11 @@ header-img: "img/home-bg.jpg"
 </div>
 <hr class="post-divider">
 {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Pager -->
 {% if paginator.total_pages > 1 %}
