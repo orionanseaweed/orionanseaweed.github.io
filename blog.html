@@ -1,0 +1,222 @@
+---
+layout: default
+title: "Blog"
+description: ""
+header-img: "img/home-bg.jpg"
+---
+
+<!-- Tag Filter Section -->
+<div class="tag-filter-section">
+    <h4 style="margin-bottom: 15px; color: #333;">Filter by Tags:</h4>
+    <div id="tag_cloud" class="tags">
+        <a href="#" class="tag-filter-btn active" data-tag="all">All Posts</a>
+        {% assign all_tags = "" | split: "," %}
+        {% for post in site.posts %}
+            {% for tag in post.tags %}
+                {% unless all_tags contains tag %}
+                    {% assign all_tags = all_tags | push: tag %}
+                {% endunless %}
+            {% endfor %}
+        {% endfor %}
+        {% for tag in all_tags %}
+            <a href="#" class="tag-filter-btn" data-tag="{{ tag | downcase }}">{{ tag }}</a>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Separator line between filter and posts -->
+<div class="filter-posts-separator"></div>
+
+{% for post in paginator.posts %}
+<div class="post-preview post-item" data-tags="{% for tag in post.tags %}{{ tag | downcase }}{% unless forloop.last %},{% endunless %}{% endfor %}">
+    <a href="{{ post.url | prepend: site.baseurl }}">
+        <h2 class="post-title">
+            {{ post.title }}
+        </h2>
+        {% if post.subtitle %}
+        <h3 class="post-subtitle">
+            {{ post.subtitle }}
+        </h3>
+        {% endif %}
+        <div class="post-content-preview">
+            {{ post.content | strip_html | truncate:200 }}
+        </div>
+    </a>
+    
+    <!-- Tags and Date Display -->
+    {% if post.tags %}
+    <div class="post-meta-tags">
+        <div class="post-tags">
+            <span class="tag-label">Tags:</span>
+            {% for tag in post.tags %}
+            <span class="post-tag">{{ tag }}</span>
+            {% endfor %}
+        </div>
+        <div class="post-date">
+            {{ post.date | date: "%B %-d, %Y" }}
+        </div>
+    </div>
+    {% else %}
+    <div class="post-meta-tags">
+        <div class="post-date">
+            {{ post.date | date: "%B %-d, %Y" }}
+        </div>
+    </div>
+    {% endif %}
+</div>
+<hr class="post-divider">
+{% endfor %}
+
+<!-- Pager -->
+{% if paginator.total_pages > 1 %}
+<ul class="pager">
+    {% if paginator.previous_page %}
+    <li class="previous">
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
+    </li>
+    {% endif %}
+    {% if paginator.next_page %}
+    <li class="next">
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
+    </li>
+    {% endif %}
+</ul>
+{% endif %}
+
+<!-- Tag Filter JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const tagButtons = document.querySelectorAll('.tag-filter-btn');
+    const postItems = document.querySelectorAll('.post-item');
+    
+    tagButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const selectedTag = this.getAttribute('data-tag');
+            
+            // Update active button with smooth transition
+            tagButtons.forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.transform = 'scale(1)';
+            });
+            this.classList.add('active');
+            this.style.transform = 'scale(1.05)';
+            
+            // Filter posts with fade effect
+            postItems.forEach(post => {
+                const postTags = post.getAttribute('data-tags').split(',');
+                const postDivider = post.nextElementSibling;
+                
+                if (selectedTag === 'all' || postTags.includes(selectedTag)) {
+                    post.style.display = 'block';
+                    if (postDivider && postDivider.classList.contains('post-divider')) {
+                        postDivider.style.display = 'block';
+                    }
+                    setTimeout(() => {
+                        post.style.opacity = '1';
+                        post.style.transform = 'translateY(0)';
+                        if (postDivider && postDivider.classList.contains('post-divider')) {
+                            postDivider.style.opacity = '1';
+                        }
+                    }, 10);
+                } else {
+                    post.style.opacity = '0';
+                    post.style.transform = 'translateY(-10px)';
+                    if (postDivider && postDivider.classList.contains('post-divider')) {
+                        postDivider.style.opacity = '0';
+                    }
+                    setTimeout(() => {
+                        post.style.display = 'none';
+                        if (postDivider && postDivider.classList.contains('post-divider')) {
+                            postDivider.style.display = 'none';
+                        }
+                    }, 300);
+                }
+            });
+        });
+    });
+});
+</script>
+
+<style>
+.tag-filter-section {
+    margin-bottom: 25px;
+}
+
+.tag-filter-btn {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.tag-filter-btn.active {
+    transform: scale(1.05);
+    background-color: #666 !important;
+    color: white !important;
+}
+
+.post-meta-tags {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    padding-top: 8px;
+}
+
+.post-tags {
+    font-size: 12px;
+    line-height: 1.3;
+    flex: 1;
+}
+
+.tag-label {
+    color: #666;
+    margin-right: 6px;
+    font-weight: 500;
+}
+
+.post-tag {
+    display: inline;
+    color: #666;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.post-tag:not(:last-child)::after {
+    content: ' • ';
+    color: #999;
+    font-weight: 300;
+    margin: 0 4px;
+}
+
+.post-date {
+    color: #666;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: right;
+}
+
+.post-divider {
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+.post-item {
+    transition: all 0.3s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.post-item[style*="display: none"] {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.filter-posts-separator {
+    height: 0;
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 30px 0;
+}
+</style>
+
