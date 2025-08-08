@@ -37,11 +37,8 @@ description: ""
             {{ post.content | strip_html | truncate:200 }}
         </div>
     </a>
-    <p class="post-meta">
-        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
-    </p>
     
-    <!-- Tags Display -->
+    <!-- Tags and Date Display -->
     {% if post.tags %}
     <div class="post-meta-tags">
         <div class="post-tags">
@@ -49,6 +46,15 @@ description: ""
             {% for tag in post.tags %}
             <span class="post-tag">{{ tag }}</span>
             {% endfor %}
+        </div>
+        <div class="post-date">
+            {{ post.date | date: "%B %-d, %Y" }}
+        </div>
+    </div>
+    {% else %}
+    <div class="post-meta-tags">
+        <div class="post-date">
+            {{ post.date | date: "%B %-d, %Y" }}
         </div>
     </div>
     {% endif %}
@@ -131,19 +137,13 @@ document.addEventListener('DOMContentLoaded', function() {
     color: white !important;
 }
 
-.post-meta {
-    margin-bottom: 8px;
-    display: inline-block;
-    float: right;
-    text-align: right;
-}
-
 .post-meta-tags {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 8px;
-    clear: both;
+    padding-top: 8px;
+    border-top: 1px solid #eee;
 }
 
 .post-tags {
@@ -170,6 +170,13 @@ document.addEventListener('DOMContentLoaded', function() {
     color: #999;
     font-weight: 300;
     margin: 0 4px;
+}
+
+.post-date {
+    color: #666;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: right;
 }
 
 .post-item {
