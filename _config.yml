@@ -19,7 +19,7 @@
 title: Tung's Archive
 SEOTitle: Xuan Tung Hoang
 header-img: img/home-bg.jpg
-email: concealedcharacterx@gmail.com
+email: hxtunq@gmail.com
 description: "Every failure is leading towards success."
 keyword: "biology, astrobiology, science, universe, blog"
 url: "http://orionanseaweed.github.io"
@@ -30,14 +30,13 @@ github_repo: "https://github.com/orionanseaweed/orionanseaweed.github.io.git"
 
 sidebar: true
 sidebar--description: "Incoming biologist."
+sidebar--avatar: /img/Stone-MinecraftWiki.png
 
 # ---- 3、Social Media
 
 RSS: false 
 
-github_username:    orionanseaweed    
 facebook_username:  hxtunq
-linkedin_username:  hxtung
 instagram_username: lemarid_an    
 flickr_username:    196824145@N03
 
