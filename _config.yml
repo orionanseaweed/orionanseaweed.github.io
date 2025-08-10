@@ -30,7 +30,7 @@ github_repo: "https://github.com/orionanseaweed/orionanseaweed.github.io.git"
 
 sidebar: true
 sidebar--description: "Incoming biologist."
-sidebar--avatar: /img/Stone-MinecraftWiki.png
+sidebar-avatar: /img/Stone-MinecraftWiki.png
 
 # ---- 3、Social Media
 
