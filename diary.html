@@ -29,7 +29,8 @@ header-img: "img/home-bg.jpg"
                 <div id="tag_cloud" class="tags">
                     <a href="#" class="tag-filter-btn active" data-tag="all">All</a>
                     {% assign all_tags = "" | split: "," %}
-                    {% for entry in site.diary %}
+                    {% assign diary_entries = site.diary | sort: 'date' | reverse %}
+                    {% for entry in diary_entries %}
                         {% for tag in entry.tags %}
                             {% unless all_tags contains tag %}
                                 {% assign all_tags = all_tags | push: tag %}
@@ -45,9 +46,9 @@ header-img: "img/home-bg.jpg"
             <!-- Separator line between filter and posts -->
             <div class="filter-posts-separator"></div>
 
-            {% for entry in site.diary %}
+            {% for entry in diary_entries %}
             <div class="post-preview post-item" data-tags="{% for tag in entry.tags %}{{ tag | downcase }}{% unless forloop.last %},{% endunless %}{% endfor %}">
-                <a href="{{ entry.url | prepend: site.baseurl }}">
+                <a href="{{ entry.url | prepend: site.baseurl | replace: '//', '/' }}">
                     <h2 class="post-title">
                         {{ entry.title }}
                     </h2>
