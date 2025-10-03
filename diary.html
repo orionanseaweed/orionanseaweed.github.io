@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Diary"
-description: ""
+description: "Personal diary entries"
 header-img: "img/home-bg.jpg"
 ---
 
@@ -16,10 +16,12 @@ header-img: "img/home-bg.jpg"
                 </div>
             </div>
         </div>
+    </div>
 </header>
 
 <!-- Main Content -->
 <div class="container">
+    <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <!-- Tag Filter Section -->
             <div class="tag-filter-section">
@@ -27,8 +29,8 @@ header-img: "img/home-bg.jpg"
                 <div id="tag_cloud" class="tags">
                     <a href="#" class="tag-filter-btn active" data-tag="all">All</a>
                     {% assign all_tags = "" | split: "," %}
-                    {% for diary in site.diary %}
-                        {% for tag in diary.tags %}
+                    {% for entry in site.diary %}
+                        {% for tag in entry.tags %}
                             {% unless all_tags contains tag %}
                                 {% assign all_tags = all_tags | push: tag %}
                             {% endunless %}
@@ -43,44 +45,39 @@ header-img: "img/home-bg.jpg"
             <!-- Separator line between filter and posts -->
             <div class="filter-posts-separator"></div>
 
-            {% if site.diary == empty %}
-            <p class="no-diary" style="color:#666; font-style:italic;">No diary entries found. Please ensure files exist in <code>_diary/</code> and have valid YAML front matter, then restart Jekyll.</p>
-            {% endif %}
-
-            {% for diary in site.diary | sort: 'date' | reverse %}
-            <div class="post-preview post-item" data-tags="{% for tag in diary.tags %}{{ tag | downcase }}{% unless forloop.last %},{% endunless %}{% endfor %}">
-                <a href="{{ diary.url | prepend: site.baseurl }}">
+            {% for entry in site.diary %}
+            <div class="post-preview post-item" data-tags="{% for tag in entry.tags %}{{ tag | downcase }}{% unless forloop.last %},{% endunless %}{% endfor %}">
+                <a href="{{ entry.url | prepend: site.baseurl }}">
                     <h2 class="post-title">
-                        {{ diary.title }}
+                        {{ entry.title }}
                     </h2>
-                    {% if diary.subtitle %}
+                    {% if entry.subtitle %}
                     <h3 class="post-subtitle">
-                        {{ diary.subtitle }}
+                        {{ entry.subtitle }}
                     </h3>
                     {% endif %}
                     <div class="post-content-preview">
-                        {{ diary.content | strip_html | truncate:200 }}
+                        {{ entry.content | strip_html | truncate:200 }}
                     </div>
                 </a>
-
+                
                 <!-- Tags and Date Display -->
-                {% if diary.tags %}
-
+                {% if entry.tags %}
                 <div class="post-meta-tags">
                     <div class="post-tags">
                         <span class="tag-label">Tags:</span>
-                        {% for tag in diary.tags %}
+                        {% for tag in entry.tags %}
                         <span class="post-tag">{{ tag }}</span>
                         {% endfor %}
                     </div>
                     <div class="post-date">
-                        {{ diary.date | date: "%B %-d, %Y" }}
+                        {{ entry.date | date: "%B %-d, %Y" }}
                     </div>
                 </div>
                 {% else %}
                 <div class="post-meta-tags">
                     <div class="post-date">
-                        {{ diary.date | date: "%B %-d, %Y" }}
+                        {{ entry.date | date: "%B %-d, %Y" }}
                     </div>
                 </div>
                 {% endif %}
