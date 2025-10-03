@@ -2,7 +2,8 @@
 title: "Sample Diary Entry"
 date: 2025-10-03
 layout: post
-tags: [personal, sample]
+tags: [2025, random thought]
+header-img: img/post-bg-coffee.jpeg
 ---
 
 This is a sample diary entry. Use the `_diary/` collection to add your own entries.
