@@ -80,6 +80,12 @@ highlighter: rouge
 kramdown:
   input: GFM   # use Github Flavored Markdown !important
 
+# Collections: separate diary entries from _posts
+collections:
+  diary:
+    output: true
+    permalink: /diary/:path/
+
 # Progressive Web Apps
 chrome-tab-theme-color: "#000000"
 service-worker: true
