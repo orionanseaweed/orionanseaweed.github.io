@@ -87,7 +87,6 @@ service-worker: true
 +collections:
 +  diary:
 +    output: true
-*** End Patch
 
 # ---- 5、插件配置
 
