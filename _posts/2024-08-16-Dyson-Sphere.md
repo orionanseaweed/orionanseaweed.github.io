@@ -8,7 +8,7 @@ header-img: img/post-bg-coffee.jpeg
 catalog: true
 tags:
     - Universe
-    - Life detection
+    - Life Detection
 ---
 
 Even a normal kid or anyone just once watching the Marvel series or Star Wars can imagine a perspective outside our planet in that immensity universe. Exoplanet citizens with a big head? Numerous spaceships that contain a whole country, wander between stars? Or the parent planet with many skyscraper buildings, everywhere are robotics and automatication?
