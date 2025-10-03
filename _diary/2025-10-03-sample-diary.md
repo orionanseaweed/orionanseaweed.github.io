@@ -1,9 +1,10 @@
 ---
+layout: post
 title: "Sample Diary Entry"
 date: 2025-10-03
-layout: post
-tags: [2025, random thought]
+author: Hoàng Xuân Tùng
 header-img: img/post-bg-coffee.jpeg
+tags: [2025, random thought]
 ---
 
 This is a sample diary entry. Use the `_diary/` collection to add your own entries.
