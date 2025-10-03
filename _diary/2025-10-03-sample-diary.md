@@ -1,6 +1,7 @@
 ---
 title: "Sample Diary Entry"
 date: 2025-10-03
+layout: post
 tags: [personal, sample]
 ---
 
