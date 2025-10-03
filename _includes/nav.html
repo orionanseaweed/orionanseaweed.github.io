@@ -19,9 +19,6 @@
                     <li>
                         <a href="{{ site.baseurl }}/">About</a>
                     </li>
-                    <li>
-                        <a href="{{ site.baseurl }}/diary/">Diary</a>
-                    </li>
                     {% for page in site.pages %}{% if page.title and page.title != "About" %}
                     <li>
                         <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
