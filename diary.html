@@ -45,6 +45,10 @@ header-img: "img/home-bg.jpg"
             <!-- Separator line between filter and posts -->
             <div class="filter-posts-separator"></div>
 
+            {% if site.diary == empty %}
+            <p class="no-diary" style="color:#666; font-style:italic;">No diary entries found. Please ensure files exist in <code>_diary/</code> and have valid YAML front matter, then restart Jekyll.</p>
+            {% endif %}
+
             {% for diary in site.diary | sort: 'date' | reverse %}
             <div class="post-preview post-item" data-tags="{% for tag in diary.tags %}{{ tag | downcase }}{% unless forloop.last %},{% endunless %}{% endfor %}">
                 <a href="{{ diary.url | prepend: site.baseurl }}">
