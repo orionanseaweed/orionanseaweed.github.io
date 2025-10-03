@@ -27,7 +27,7 @@ header-img: "img/home-bg.jpg"
             <div class="tag-filter-section">
                 <h4 style="margin-bottom: 15px; color: #333;">Filter by Tags:</h4>
                 <div id="tag_cloud" class="tags">
-                    <a href="#" class="tag-filter-btn active" data-tag="all">all</a>
+                    <a href="#" class="tag-filter-btn active" data-tag="all">All</a>
                     {% assign all_tags = "" | split: "," %}
                     {% for diary in site.diary %}
                         {% for tag in diary.tags %}
