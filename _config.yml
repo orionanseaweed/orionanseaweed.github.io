@@ -87,6 +87,15 @@ service-worker: true
 collections:
   diary:
     output: true
+    permalink: /:year/:month/:day/:title/
+
+# Default front-matter for diary collection: set same permalink pattern as posts
+defaults:
+  - scope:
+      path: ""
+      type: diary
+    values:
+      permalink: /:year/:month/:day/:title/
 
 # ---- 5、插件配置
 
