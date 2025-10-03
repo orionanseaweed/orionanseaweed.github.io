@@ -67,7 +67,7 @@ header-img: "img/home-bg.jpg"
                     <div class="post-tags">
                         <span class="tag-label">Tags:</span>
                         {% for tag in post.tags %}
-                        <span class="post-tag">{{ tag }}</span>
+                        <span class="post-tag">{{ tag }}</span>{% unless forloop.last %}<span class="tag-sep"> • </span>{% endunless %}
                         {% endfor %}
                     </div>
                     <div class="post-date">
@@ -187,8 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
     font-weight: 400;
 }
 
-.post-tag:not(:last-child)::after {
-    content: ' • ';
+.tag-sep {
     color: #999;
     font-weight: 300;
     margin: 0 4px;
