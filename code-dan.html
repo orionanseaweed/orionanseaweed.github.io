@@ -5,58 +5,41 @@ noindex: true
 subtitle: "Tháng 10 của code đần"
 ---
 
----
-title: "Nhật ký code"
----
-
 <style>
-	/* Single-column diary card style */
-	.diary-list { max-width: 980px; margin: 2rem auto; padding: 0 1rem; }
-	.diary-intro { color: #444; margin-bottom: 1rem; }
-	.diary-entry { background: #fff; border: 1px solid #eef0f2; border-radius: 8px; padding: 1rem 1.1rem; margin-bottom: 1rem; box-shadow: 0 1px 4px rgba(20,20,20,0.03); }
-	.entry-date { font-weight: 700; color: #222; margin-bottom: 0.35rem; }
-	.entry-time { color: #6a6f75; font-size: 0.9rem; margin-left: 0.5rem; font-weight: 500; }
-	.entry-content p { margin: 0.25rem 0 0.8rem 0; line-height: 1.6; color: #333; }
-	.entry-image { display: block; width: 100%; max-height: 420px; object-fit: cover; border-radius: 6px; margin-top: 0.5rem; }
-	figure { margin: 0; }
-	figcaption { font-size: 0.85rem; color: #777; margin-top: 0.35rem; }
-	@media (max-width:700px){ .diary-list{padding:0 0.6rem} .entry-image{max-height:260px} }
+	/* Very minimal diary style: no frames, simple list */
+	.diary-list { max-width: 900px; margin: 1.6rem auto; padding: 0 1rem; color: #333; }
+	.diary-entry { margin: 1.1rem 0; }
+	.entry-date { font-weight: 700; display:block; color:#111; }
+	.entry-time { color:#666; font-size:0.95rem; margin-left:0.4rem; }
+	.entry-content p { margin: 0.35rem 0; line-height:1.6; }
+	.entry-image { display:block; max-width:100%; height:auto; margin-top:0.6rem; }
 </style>
 
 <div class="diary-list">
-		<p class="diary-intro">Đây là trang nhật ký — đơn giản và rộng, mỗi mục có ngày, thời gian, nội dung và ảnh (nếu có).</p>
+	<p>Nhật ký ngắn — danh sách mục, mỗi mục gồm ngày + ghi chú + ảnh (nếu có).</p>
 
-		<article class="diary-entry">
-			<div class="entry-head"><span class="entry-date">20 Tháng 10, 2025</span><span class="entry-time">20:15</span></div>
-			<div class="entry-content">
-				<p>Thử nghiệm layout nhật ký đơn giản. Tạo danh sách các mục với ngày, văn bản và ảnh minh họa.</p>
-				<figure>
-					<img class="entry-image" src="/img/home-bg.jpg" alt="Ảnh nền trang chủ" />
-					<figcaption>Ảnh nền — minh họa nhật ký.</figcaption>
-				</figure>
-			</div>
-		</article>
+	<div class="diary-entry">
+		<span class="entry-date">20 Tháng 10, 2025 <span class="entry-time">20:15</span></span>
+		<div class="entry-content">
+			<p>Thử nghiệm layout nhật ký tối giản. Nội dung nằm ngay dưới ngày, không khung, không shadow.</p>
+			<img class="entry-image" src="/img/home-bg.jpg" alt="Ảnh nền trang chủ" />
+		</div>
+	</div>
 
-		<article class="diary-entry">
-			<div class="entry-head"><span class="entry-date">16 Tháng 8, 2024</span><span class="entry-time">09:40</span></div>
-			<div class="entry-content">
-				<p>Ghi chú về bài viết mới: <em>Dyson Sphere</em>. Lưu ý về cấu trúc bài và hình ảnh đính kèm.</p>
-				<figure>
-					<img class="entry-image" src="/img/Stone-MinecraftWiki.png" alt="Stone Minecraft Wiki" />
-					<figcaption>Hình minh họa liên quan tới bài viết.</figcaption>
-				</figure>
-			</div>
-		</article>
+	<div class="diary-entry">
+		<span class="entry-date">16 Tháng 8, 2024 <span class="entry-time">09:40</span></span>
+		<div class="entry-content">
+			<p>Ghi chú về bài viết: <em>Dyson Sphere</em>. Ghi chú ngắn, không rườm rà.</p>
+			<img class="entry-image" src="/img/Stone-MinecraftWiki.png" alt="Stone Minecraft Wiki" />
+		</div>
+	</div>
 
-		<article class="diary-entry">
-			<div class="entry-head"><span class="entry-date">01 Tháng 12, 2023</span><span class="entry-time">18:05</span></div>
-			<div class="entry-content">
-				<p>Ghi chú nhỏ: chơi với layout, thêm style nhẹ để trang nhìn gọn và dễ đọc trên thiết bị di động.</p>
-				<figure>
-					<img class="entry-image" src="/img/404-bg.jpg" alt="Background 404" />
-					<figcaption>Ảnh thử nghiệm khác.</figcaption>
-				</figure>
-			</div>
-		</article>
+	<div class="diary-entry">
+		<span class="entry-date">01 Tháng 12, 2023 <span class="entry-time">18:05</span></span>
+		<div class="entry-content">
+			<p>Ghi chú nhỏ: thử nghiệm bố cục, kiểm tra hiển thị trên mobile.</p>
+			<img class="entry-image" src="/img/404-bg.jpg" alt="Background 404" />
+		</div>
+	</div>
 
 </div>
