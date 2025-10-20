@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Dyson Sphere
+title:      Dyson Sphere (Test)
 subtitle:   
 date:       2024-08-16
 author:     Kane

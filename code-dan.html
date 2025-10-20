@@ -5,11 +5,67 @@ noindex: true
 subtitle: "Tháng 10 của code đần"
 ---
 
-<p>Đây là một trang nhật ký kỹ thuật riêng tư — không được liệt kê trong navigation. Chỉ truy cập được khi biết đường dẫn <code>/code-dan/</code>.</p>
+---
+title: "Nhật ký code"
+---
 
-## 2025-10-20
+<style>
+	/* Minimal diary styles */
+	.diary-list { max-width: 820px; margin: 0 auto; padding: 1rem; }
+	.diary-entry { border-bottom: 1px solid #e6e6e6; padding: 1rem 0; display: flex; gap: 1rem; align-items: flex-start; }
+	.entry-meta { width: 140px; flex-shrink: 0; color: #666; font-size: 0.95rem; }
+	.entry-meta time { display: block; font-weight: 600; color: #333; }
+	.entry-content { flex: 1; }
+	.entry-content p { margin: 0 0 0.6rem 0; line-height: 1.5; }
+	.entry-image { margin-top: 0.6rem; max-width: 100%; border-radius: 6px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+	figure { margin: 0; }
+	figcaption { font-size: 0.85rem; color: #777; margin-top: 0.35rem; }
+	@media (max-width:640px){ .diary-entry{flex-direction:column} .entry-meta{width:auto} }
+</style>
 
-Ghi chú nhỏ:
+<div class="diary-list">
+	<p>Đây là trang nhật ký đơn giản: mỗi mục gồm ngày tháng, ghi chú ngắn và ảnh (nếu có).</p>
 
-- Thử nghiệm layout "diary" cho trang tĩnh.
-- Trang này không có `title` trong front-matter nên template `_includes/nav.html` sẽ bỏ qua nó.
+	<article class="diary-entry">
+		<aside class="entry-meta">
+			<time datetime="2025-10-20">20 Tháng 10, 2025</time>
+			<div>20:15</div>
+		</aside>
+		<div class="entry-content">
+			<p>Thử nghiệm layout nhật ký đơn giản. Tạo danh sách các mục với ngày, văn bản và ảnh minh họa.</p>
+			<figure>
+				<img class="entry-image" src="/img/home-bg.jpg" alt="Ảnh nền trang chủ" />
+				<figcaption>Ảnh nền — minh họa nhật ký.</figcaption>
+			</figure>
+		</div>
+	</article>
+
+	<article class="diary-entry">
+		<aside class="entry-meta">
+			<time datetime="2024-08-16">16 Tháng 8, 2024</time>
+			<div>09:40</div>
+		</aside>
+		<div class="entry-content">
+			<p>Ghi chú về bài viết mới: <em>Dyson Sphere</em>. Lưu ý về cấu trúc bài và hình ảnh đính kèm.</p>
+			<figure>
+				<img class="entry-image" src="/img/Stone-MinecraftWiki.png" alt="Stone Minecraft Wiki" />
+				<figcaption>Hình minh họa liên quan tới bài viết.</figcaption>
+			</figure>
+		</div>
+	</article>
+
+	<article class="diary-entry">
+		<aside class="entry-meta">
+			<time datetime="2023-12-01">01 Tháng 12, 2023</time>
+			<div>18:05</div>
+		</aside>
+		<div class="entry-content">
+			<p>Ghi chú nhỏ: chơi với layout, thêm style nhẹ để trang nhìn gọn và dễ đọc trên thiết bị di động.</p>
+			<figure>
+				<img class="entry-image" src="/img/404-bg.jpg" alt="Background 404" />
+				<figcaption>Ảnh thử nghiệm khác.</figcaption>
+			</figure>
+		</div>
+	</article>
+
+</div>
