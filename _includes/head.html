@@ -41,9 +41,18 @@
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- Load Noto Sans (Vietnamese) from Google Fonts for consistent Vietnamese rendering -->
+    <!-- Commented out: using local fonts instead. Remove comment if you want to use Google Fonts again. -->
+    <!--
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;700&display=swap&subset=vietnamese" rel="stylesheet">
+    -->
+
+    <!-- Local Noto Sans (served from /fonts/) - requires WOFF2 files in /fonts/ and css/fonts-noto-local.css -->
+    <link rel="stylesheet" href="{{ "/css/fonts-noto-local.css" | prepend: site.baseurl }}">
+
+    <!-- Local override to ensure Vietnamese font is applied even if theme CSS uses other stacks -->
+    <link rel="stylesheet" href="{{ "/css/local-font-fix.css" | prepend: site.baseurl }}">
 
 
     <!-- Hux Delete, sad but pending in China

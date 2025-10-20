@@ -3,7 +3,6 @@ layout: diary
 permalink: /code-dan/
 noindex: true
 subtitle: "Tháng 10 của code đần"
-title: "Nhật ký code"
 ---
 
 Đây là trang nhật ký ở dạng Markdown — rất đơn giản: mỗi mục gồm ngày + giờ, đoạn văn, và ảnh (nếu có).

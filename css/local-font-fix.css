@@ -1,0 +1,4 @@
+/* Local override to force Noto Sans (loaded from Google Fonts) */
+body, h1, h2, h3, h4, h5, h6, p, a, li, span, div {
+  font-family: 'Noto Sans', 'Segoe UI', Roboto, 'Open Sans', Tahoma, Arial, sans-serif !important;
+}

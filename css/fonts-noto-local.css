@@ -1,0 +1,35 @@
+/* Local Noto Sans @font-face declarations
+   Place the files below into the repository under /fonts/
+   - NotoSans-Light.woff2   (300)
+   - NotoSans-Regular.woff2 (400)
+   - NotoSans-Bold.woff2    (700)
+
+   After adding these files the site will serve fonts locally and not rely on Google CDN.
+*/
+
+@font-face {
+  font-family: 'Noto Sans Local';
+  src: url('/fonts/NotoSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Noto Sans Local';
+  src: url('/fonts/NotoSans-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Noto Sans Local';
+  src: url('/fonts/NotoSans-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Make the local family the preferred Noto Sans alias used by the theme override */
+body, h1, h2, h3, h4, h5, h6, p, a, li, span, div {
+  font-family: 'Noto Sans Local', 'Noto Sans', 'Segoe UI', Roboto, 'Open Sans', Tahoma, Arial, sans-serif !important;
+}
