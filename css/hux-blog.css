@@ -130,7 +130,7 @@
 }
 body {
   /* Prioritize fonts that include Vietnamese glyphs, then fall back to system/CJK fonts */
-  font-family: "Segoe UI", Roboto, "Noto Sans", "Open Sans", Tahoma, Verdana, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font-family: 'Noto Sans', 'Segoe UI', Roboto, 'Open Sans', Tahoma, Arial, sans-serif;
   line-height: 1.7;
   font-size: 16px;
   color: #404040;
@@ -146,7 +146,7 @@ h4,
 h5,
 h6 {
   /* Headings: prefer readable web fonts with Vietnamese support */
-  font-family: "Segoe UI", Roboto, "Noto Sans", "Open Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font-family: 'Noto Sans', 'Segoe UI', Roboto, 'Open Sans', Tahoma, Arial, sans-serif;
   line-height: 1.7;
   line-height: 1.1;
   font-weight: bold;
@@ -375,7 +375,7 @@ select.sel-lang {
   width: 100%;
   z-index: 3;
   /* Prefer Vietnamese-capable fonts for navbar */
-  font-family: "Segoe UI", Roboto, "Noto Sans", "Open Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font-family: 'Noto Sans', 'Segoe UI', Roboto, 'Open Sans', Tahoma, Arial, sans-serif;
   line-height: 1.7;
 }
 .navbar-custom .navbar-brand {
@@ -526,7 +526,7 @@ select.sel-lang {
      *     TypeIsBeautiful,
      *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
      */
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font-family: 'Noto Sans', 'Segoe UI', Roboto, 'Open Sans', Tahoma, Arial, sans-serif;
   line-height: 1.7;
   font-size: 18px;
   line-height: 1.1;
@@ -554,7 +554,7 @@ select.sel-lang {
      *     TypeIsBeautiful,
      *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
      */
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font-family: 'Noto Sans', 'Segoe UI', Roboto, 'Open Sans', Tahoma, Arial, sans-serif;
   line-height: 1.7;
   font-size: 17px;
   line-height: 1.4;
@@ -729,7 +729,7 @@ form .row:first-child .floating-label-form-group {
 }
 .btn {
   /* Buttons: use fonts that render Vietnamese properly */
-  font-family: "Segoe UI", Roboto, "Noto Sans", "Open Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, Tahoma, Verdana, "PingFang SC", "Microsoft YaHei", "Microsoft JhengHei", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font-family: 'Noto Sans', 'Segoe UI', Roboto, 'Open Sans', Tahoma, Arial, sans-serif;
   line-height: 1.7;
   text-transform: uppercase;
   font-size: 14px;
@@ -758,7 +758,7 @@ form .row:first-child .floating-label-form-group {
      *     TypeIsBeautiful,
      *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
      */
-  font-family: "Segoe UI", Roboto, "Noto Sans", "Open Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, Tahoma, Verdana, "PingFang SC", "Microsoft YaHei", "Microsoft JhengHei", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font-family: 'Noto Sans', 'Segoe UI', Roboto, 'Open Sans', Tahoma, Arial, sans-serif;
   line-height: 1.7;
   text-transform: uppercase;
   font-size: 13px;
@@ -907,7 +907,7 @@ img::-moz-selection {
      *     TypeIsBeautiful,
      *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
      */
-  font-family: "Segoe UI", Roboto, "Noto Sans", "Open Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, Tahoma, Verdana, "PingFang SC", "Microsoft YaHei", "Microsoft JhengHei", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font-family: 'Noto Sans', 'Segoe UI', Roboto, 'Open Sans', Tahoma, Arial, sans-serif;
   line-height: 1.7;
 }
 .one-tag-list .post-preview {
