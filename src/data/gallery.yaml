@@ -1,0 +1,77 @@
+# =====================================================================
+# Gallery data — one entry per photo.
+# Add a new photo: copy a block below, give it a unique `id`, and edit.
+# Put the image file in  public/img/gallery/  and point `src` at it.
+# Optional fields (delete if unused): caption, date, location, camera,
+# credit_name, credit_url, tags.
+# Note: location (địa điểm) is intentionally kept in Vietnamese.
+# =====================================================================
+
+- id: trekking-2025
+  src: /img/gallery/2025-trekking.jpg
+  alt: "Trekking Ham Lon Mountain"
+  title: "Trekking Ham Lon Mountain"
+  caption: ""
+  date: "02/2025"
+  location: "Núi Hàm Lợn, Sóc Sơn, Hà Nội"
+  tags: [trekking, friends]
+
+- id: drx-2025
+  src: /img/gallery/2025-DrX.jpg
+  alt: "Lunar New Year wishes from Prof. X"
+  title: "Lunar New Year Wishes from Prof. X"
+  caption: ""
+  date: "02/2025"
+  tags: [xPhO, PI]
+
+- id: ptpd-2024
+  src: /img/gallery/2024-PTPD.jpg
+  alt: "Khanh Chi with a cute picture book"
+  title: "Khanh Chi with a cute picture book"
+  caption: "We found an adorable picture book while organizing the shelves!"
+  date: "2024"
+  location: "D Free Book"
+  tags: [books, library]
+
+- id: gni-2024
+  src: /img/gallery/2024-GNI.jpg
+  alt: "Google News Initiative gift pack"
+  title: "Google News Initiative Gift Pack"
+  caption: "A favorite challenge of mine, where I picked up valuable skills in information validation and verification."
+  date: "2024"
+  tags: [achievement, skills]
+
+- id: xpho-mel-2024
+  src: /img/gallery/2024-xPhO-&-MEL.jpg
+  alt: "xPhO keychain and MEL lab notebook"
+  title: "My cherished xPhO keychain and MEL lab notebook"
+  caption: ""
+  date: "2024"
+  tags: [MEL, HUST, xPhO]
+
+- id: tqb-lib-2023
+  src: /img/gallery/2023-TQB-lib.jpg
+  alt: "Ta Quang Buu Library"
+  title: "Ta Quang Buu Library"
+  caption: "Thư viện Tạ Quang Bửu, được chụp từ toà C2"
+  date: "2023"
+  location: "Đại học Bách khoa Hà Nội"
+  tags: [school, library, HUST]
+
+- id: bach-khoa-cassava-2022
+  src: /img/gallery/2022-shiro-neko.jpg
+  alt: "Drawing of a HUST girl"
+  title: "Bach Khoa Cassava"
+  caption: "A drawing of a HUST girl in her PE uniform, from the online 2022 HUST “Drawing with Heart” event."
+  date: "2022"
+  credit_name: "Shiro Neko"
+  credit_url: "https://www.facebook.com/neko.shirou"
+  tags: [artwork, HUST]
+
+- id: cam-sieu-choe-2018
+  src: /img/gallery/2018-CSC.jpg
+  alt: "Drawing of the Cam Sieu Choe team"
+  title: "Cam Sieu Choe"
+  caption: "Throwback to our lil' high school online grocery gang! 📦✨"
+  date: "2018"
+  tags: [high school, memories]

@@ -1,0 +1,55 @@
+---
+import { SOCIALS } from '../consts';
+---
+
+<ul class="social-list">
+  {
+    SOCIALS.map((s) => (
+      <li>
+        <a
+          href={s.href}
+          target={s.href.startsWith('mailto:') ? undefined : '_blank'}
+          rel="noopener noreferrer"
+          aria-label={s.name}
+          title={s.name}
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d={s.icon} />
+          </svg>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .social-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .social-list a {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    color: var(--color-muted);
+    background: #f1f3f5;
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease,
+      transform 0.2s ease;
+  }
+  .social-list a:hover,
+  .social-list a:focus-visible {
+    color: #fff;
+    background: var(--color-accent);
+    transform: translateY(-2px);
+  }
+</style>

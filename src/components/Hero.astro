@@ -1,0 +1,87 @@
+---
+import { SITE } from '../consts';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  image?: string;
+  big?: boolean;
+  mask?: number;
+}
+
+const { title, subtitle, image = SITE.defaultHeader, big = false, mask = 0.28 } = Astro.props;
+---
+
+<header class="hero" style={`background-image:url('${image}')`}>
+  <div class="hero-mask" style={`--mask:${mask}`}></div>
+  <div class:list={['hero-inner', { big }]}>
+    <h1 class:list={['hero-title', { big }]}>{title}</h1>
+    {subtitle && <p class="hero-sub">{subtitle}</p>}
+  </div>
+</header>
+
+<style>
+  .hero {
+    position: relative;
+    background-color: #808080;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .hero-mask {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, var(--mask, 0.28));
+  }
+
+  /* Sub-page hero (Blog / Gallery / Contact): ~2/3 the height of home. */
+  .hero-inner {
+    position: relative;
+    max-width: 62rem;
+    margin: 0 auto;
+    padding: 5.5rem 1.25rem 2.5rem;
+    text-align: center;
+    color: #fff;
+  }
+  @media (min-width: 768px) {
+    .hero-inner {
+      padding: 6.5rem 1.25rem 4.5rem;
+    }
+  }
+
+  /* Home hero: full height. */
+  .hero-inner.big {
+    padding: 7.5rem 1.25rem 4rem;
+  }
+  @media (min-width: 768px) {
+    .hero-inner.big {
+      padding: 10rem 1.25rem 8rem;
+    }
+  }
+
+  .hero-title {
+    margin: 0;
+    font-size: 34px;
+    letter-spacing: 0.2px;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
+  }
+  @media (min-width: 768px) {
+    .hero-title {
+      font-size: 48px;
+    }
+  }
+  .hero-title.big {
+    font-size: 38px;
+  }
+  @media (min-width: 768px) {
+    .hero-title.big {
+      font-size: 58px;
+    }
+  }
+  .hero-sub {
+    margin: 0.75rem 0 0;
+    font-weight: 300;
+    font-size: 18px;
+    opacity: 0.95;
+  }
+</style>

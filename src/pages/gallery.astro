@@ -1,0 +1,449 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import { getCollection } from 'astro:content';
+
+const photos = (await getCollection('gallery')).map((e) => e.data);
+---
+
+<BaseLayout title="Gallery" description="Một vài khoảnh khắc mình muốn giữ lại.">
+  <Hero title="Gallery" />
+
+  <section class="gallery-wrap">
+    <div class="ig-grid" id="ig-grid">
+      {
+        photos.map((photo, i) => (
+          <button class="ig-item" type="button" data-index={i} aria-label={`Xem ảnh: ${photo.title}`}>
+            <img src={photo.src} alt={photo.alt || photo.title} loading="lazy" />
+            <span class="ig-overlay">
+              <span class="ig-overlay-title">{photo.title}</span>
+              {photo.date && (
+                <span class="ig-overlay-date">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                  {photo.date}
+                </span>
+              )}
+            </span>
+          </button>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Lightbox: image on the left, metadata on the right (Instagram-style) -->
+  <div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Trình xem ảnh" hidden>
+    <div class="lb-backdrop" data-lb-close></div>
+    <button class="lb-btn lb-close" type="button" aria-label="Đóng (Esc)" data-lb-close>&times;</button>
+    <button class="lb-btn lb-nav lb-prev" type="button" aria-label="Ảnh trước (←)">&#8249;</button>
+    <button class="lb-btn lb-nav lb-next" type="button" aria-label="Ảnh sau (→)">&#8250;</button>
+
+    <figure class="lb-panel">
+      <div class="lb-media"><img id="lb-img" src="" alt="" /></div>
+      <figcaption class="lb-meta">
+        <h3 class="lb-title" id="lb-title"></h3>
+        <p class="lb-caption" id="lb-caption"></p>
+        <ul class="lb-details" id="lb-details"></ul>
+        <div class="lb-tags" id="lb-tags"></div>
+        <div class="lb-footer"><span class="lb-counter" id="lb-counter"></span></div>
+      </figcaption>
+    </figure>
+  </div>
+</BaseLayout>
+
+<script is:inline define:vars={{ GALLERY: photos }}>
+  (function () {
+    var lb = document.getElementById('lightbox');
+    var lbImg = document.getElementById('lb-img');
+    var lbTitle = document.getElementById('lb-title');
+    var lbCap = document.getElementById('lb-caption');
+    var lbDet = document.getElementById('lb-details');
+    var lbTags = document.getElementById('lb-tags');
+    var lbCnt = document.getElementById('lb-counter');
+    var current = 0;
+
+    function esc(s) {
+      return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+    function svg(inner) {
+      return (
+        '<svg class="det-ic" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+        inner +
+        '</svg>'
+      );
+    }
+    var IC = {
+      date: svg('<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>'),
+      loc: svg('<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>'),
+      cam: svg('<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3.2"/>'),
+      credit: svg('<path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/><path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02z"/>'),
+    };
+
+    function render(i) {
+      current = (i + GALLERY.length) % GALLERY.length;
+      var p = GALLERY[current];
+
+      lbImg.src = p.src;
+      lbImg.alt = p.alt || p.title || '';
+      lbTitle.textContent = p.title || '';
+      lbCap.textContent = p.caption || '';
+      lbCap.style.display = p.caption ? '' : 'none';
+
+      var rows = [];
+      if (p.date) rows.push('<li>' + IC.date + '<span>' + esc(p.date) + '</span></li>');
+      if (p.location) rows.push('<li>' + IC.loc + '<span>' + esc(p.location) + '</span></li>');
+      if (p.camera) rows.push('<li>' + IC.cam + '<span>' + esc(p.camera) + '</span></li>');
+      if (p.credit_name) {
+        var credit = p.credit_url
+          ? '<a href="' + esc(p.credit_url) + '" target="_blank" rel="noopener noreferrer">' + esc(p.credit_name) + '</a>'
+          : esc(p.credit_name);
+        rows.push('<li>' + IC.credit + '<span>Tác giả: ' + credit + '</span></li>');
+      }
+      lbDet.innerHTML = rows.join('');
+      lbDet.style.display = rows.length ? '' : 'none';
+
+      lbTags.innerHTML = (p.tags || [])
+        .map(function (t) {
+          return '<span class="lb-tag">#' + esc(t) + '</span>';
+        })
+        .join('');
+
+      lbCnt.textContent = current + 1 + ' / ' + GALLERY.length;
+
+      [current + 1, current - 1].forEach(function (j) {
+        var q = GALLERY[(j + GALLERY.length) % GALLERY.length];
+        var img = new Image();
+        img.src = q.src;
+      });
+    }
+
+    function open(i) {
+      render(i);
+      lb.hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      lb.hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('ig-grid').addEventListener('click', function (e) {
+      var item = e.target.closest('.ig-item');
+      if (item) open(parseInt(item.getAttribute('data-index'), 10));
+    });
+    lb.addEventListener('click', function (e) {
+      if (e.target.hasAttribute('data-lb-close')) close();
+    });
+    lb.querySelector('.lb-prev').addEventListener('click', function () {
+      render(current - 1);
+    });
+    lb.querySelector('.lb-next').addEventListener('click', function () {
+      render(current + 1);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (lb.hidden) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') render(current - 1);
+      else if (e.key === 'ArrowRight') render(current + 1);
+    });
+  })();
+</script>
+
+<style is:global>
+  .gallery-wrap {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+  .ig-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin: 2.5rem 0 3.5rem;
+  }
+  @media (max-width: 992px) {
+    .ig-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: 640px) {
+    .ig-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+  }
+  .ig-item {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #eef1f3;
+  }
+  .ig-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .ig-item:hover img,
+  .ig-item:focus-visible img {
+    transform: scale(1.06);
+  }
+  .ig-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 36px 12px 10px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0));
+    color: #fff;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(6px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+  .ig-item:hover .ig-overlay,
+  .ig-item:focus-visible .ig-overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .ig-overlay-title {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+  .ig-overlay-date {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    opacity: 0.9;
+    margin-top: 3px;
+  }
+
+  /* ---------- Lightbox ---------- */
+  .lb {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 64px;
+  }
+  .lb[hidden] {
+    display: none;
+  }
+  .lb-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    animation: lbFade 0.1s linear both;
+  }
+  @keyframes lbFade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .lb-panel {
+    position: relative;
+    display: flex;
+    margin: 0;
+    width: 100%;
+    max-width: 1150px;
+    max-height: 88vh;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: lbPop 0.13s ease-out both;
+  }
+  @keyframes lbPop {
+    from {
+      opacity: 0;
+      transform: scale(0.99);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lb-backdrop,
+    .lb-panel {
+      animation: none;
+    }
+  }
+  .lb-media {
+    flex: 1 1 auto;
+    min-width: 0;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lb-media img {
+    max-width: 100%;
+    max-height: 88vh;
+    object-fit: contain;
+    display: block;
+  }
+  .lb-meta {
+    flex: 0 0 340px;
+    max-width: 340px;
+    padding: 26px 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+  }
+  .lb-title {
+    margin: 0 0 12px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #222;
+    line-height: 1.4;
+  }
+  .lb-caption {
+    margin: 0 0 18px;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.7;
+  }
+  .lb-details {
+    list-style: none;
+    margin: 0 0 16px;
+    padding: 14px 0 0;
+    border-top: 1px solid #eee;
+  }
+  .lb-details li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .lb-details .det-ic {
+    flex: 0 0 auto;
+    margin-top: 2px;
+    color: var(--color-accent);
+  }
+  .lb-details a {
+    color: var(--color-accent);
+  }
+  .lb-tags {
+    margin-top: auto;
+    padding-top: 8px;
+  }
+  .lb-tag {
+    display: inline-block;
+    font-size: 12px;
+    color: var(--color-accent);
+    background: rgba(0, 133, 161, 0.08);
+    border-radius: 999px;
+    padding: 3px 11px;
+    margin: 0 6px 6px 0;
+  }
+  .lb-footer {
+    padding-top: 12px;
+    border-top: 1px solid #eee;
+    margin-top: 12px;
+  }
+  .lb-counter {
+    font-size: 12px;
+    color: #999;
+    letter-spacing: 1px;
+  }
+  .lb-btn {
+    position: absolute;
+    z-index: 2;
+    border: none;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    font-size: 26px;
+    padding: 0;
+    text-align: center;
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+  .lb-btn:hover {
+    background: rgba(255, 255, 255, 0.28);
+    transform: scale(1.08);
+  }
+  .lb-close {
+    top: 16px;
+    right: 18px;
+  }
+  .lb-prev {
+    left: 10px;
+    top: 50%;
+    margin-top: -22px;
+  }
+  .lb-next {
+    right: 10px;
+    top: 50%;
+    margin-top: -22px;
+  }
+  @media (max-width: 768px) {
+    .lb {
+      padding: 0;
+    }
+    .lb-panel {
+      flex-direction: column;
+      max-height: 100vh;
+      height: 100%;
+      border-radius: 0;
+    }
+    .lb-media {
+      flex: 0 0 auto;
+      max-height: 55vh;
+    }
+    .lb-media img {
+      max-height: 55vh;
+    }
+    .lb-meta {
+      flex: 1 1 auto;
+      max-width: none;
+    }
+    .lb-close {
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.45);
+    }
+    .lb-prev,
+    .lb-next {
+      top: auto;
+      bottom: 14px;
+      margin-top: 0;
+      background: rgba(0, 0, 0, 0.45);
+    }
+    .lb-prev {
+      left: 14px;
+    }
+    .lb-next {
+      right: 14px;
+    }
+  }
+</style>

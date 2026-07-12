@@ -1,0 +1,15 @@
+{
+  "name": "Tung's Archive",
+  "short_name": "Tung's Archive",
+  "description": "Một góc nhỏ trên internet, nơi mình chia sẻ những mảnh ghép cuộc sống.",
+  "lang": "vi",
+  "icons": [
+    { "src": "/icons/pwa_icon_128.png", "sizes": "128x128", "type": "image/png" },
+    { "src": "/icons/pwa_icon_512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone"
+}

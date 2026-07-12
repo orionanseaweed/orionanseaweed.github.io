@@ -1,0 +1,351 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+function excerpt(body = '', n = 200) {
+  const text = body
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/[#>*_`~]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return text.length > n ? text.slice(0, n).trimEnd() + '…' : text;
+}
+
+const fmt = (d: Date) =>
+  new Intl.DateTimeFormat('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' }).format(d);
+
+// Language filter options.
+const LANGS = [
+  { code: 'all', label: 'All' },
+  { code: 'vi', label: 'Tiếng Việt' },
+  { code: 'en', label: 'English' },
+];
+
+// Unique tags across posts (display casing, keyed by lowercase).
+const tagMap = new Map<string, string>();
+for (const p of posts) {
+  for (const t of p.data.tags) {
+    const key = t.toLowerCase();
+    if (!tagMap.has(key)) tagMap.set(key, t);
+  }
+}
+const tags = [...tagMap.entries()]; // [ [lower, display], ... ]
+
+const items = posts.map((post) => {
+  const ex = excerpt(post.body);
+  const search = [post.data.title, post.data.subtitle, post.data.tags.join(' '), ex]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+  const tagsAttr = post.data.tags.map((t) => t.toLowerCase()).join(',');
+  return { post, ex, search, tagsAttr };
+});
+---
+
+<BaseLayout title="Blog" description="Những mảnh ghép mình viết lại.">
+  <Hero title="Blog" />
+
+  <div class="blog-layout">
+    <!-- Filters (left) -->
+    <aside class="blog-filters">
+      <div class="filter-group">
+        <h4 class="filter-title">Keyword</h4>
+        <input
+          id="kw"
+          type="search"
+          class="kw-input"
+          placeholder="Tìm theo từ khoá…"
+          autocomplete="off"
+          aria-label="Lọc theo từ khoá"
+        />
+      </div>
+
+      <div class="filter-group">
+        <h4 class="filter-title">Language</h4>
+        <div class="chip-row">
+          {
+            LANGS.map((l) => (
+              <button
+                class:list={['chip-btn', { active: l.code === 'all' }]}
+                data-lang={l.code}
+                type="button"
+              >
+                {l.label}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+
+      {
+        tags.length > 0 && (
+          <div class="filter-group">
+            <h4 class="filter-title">Tags</h4>
+            <div class="chip-row">
+              <button class="tag-btn active" data-tag="all" type="button">
+                All
+              </button>
+              {tags.map(([key, label]) => (
+                <button class="tag-btn" data-tag={key} type="button">
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )
+      }
+    </aside>
+
+    <!-- Posts (right) -->
+    <div class="blog-posts">
+      {
+        items.map(({ post, ex, search, tagsAttr }) => (
+          <article class="post-preview" data-lang={post.data.lang} data-tags={tagsAttr} data-search={search}>
+            <a href={`/blog/${post.id}/`} class="post-link">
+              <h2 class="post-title">{post.data.title}</h2>
+              {post.data.subtitle && <h3 class="post-subtitle">{post.data.subtitle}</h3>}
+              <p class="post-excerpt">{ex}</p>
+            </a>
+            <div class="post-meta">
+              {post.data.tags.length > 0 && (
+                <div class="meta-tags">
+                  <span class="meta-label">Thẻ:</span>
+                  {post.data.tags.map((t, i) => (
+                    <>
+                      <span class="meta-tag">{t}</span>
+                      {i < post.data.tags.length - 1 && <span class="meta-dot">•</span>}
+                    </>
+                  ))}
+                </div>
+              )}
+              <time class="meta-date" datetime={post.data.date.toISOString()}>
+                {fmt(post.data.date)}
+              </time>
+            </div>
+          </article>
+        ))
+      }
+
+      {items.length === 0 && <p class="empty">Chưa có bài viết nào.</p>}
+      <p class="no-result" hidden>Không tìm thấy bài viết phù hợp.</p>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const kw = document.getElementById('kw') as HTMLInputElement | null;
+  const langBtns = [...document.querySelectorAll<HTMLButtonElement>('.chip-btn')];
+  const tagBtns = [...document.querySelectorAll<HTMLButtonElement>('.tag-btn')];
+  const posts = [...document.querySelectorAll<HTMLElement>('.post-preview')];
+  const noResult = document.querySelector<HTMLElement>('.no-result');
+
+  let query = '';
+  let lang = 'all';
+  let tag = 'all';
+
+  function apply() {
+    let shown = 0;
+    posts.forEach((p) => {
+      const okKw = !query || (p.dataset.search || '').includes(query);
+      const okLang = lang === 'all' || p.dataset.lang === lang;
+      const postTags = (p.dataset.tags || '').split(',').filter(Boolean);
+      const okTag = tag === 'all' || postTags.includes(tag);
+      const show = okKw && okLang && okTag;
+      p.classList.toggle('is-hidden', !show);
+      if (show) shown++;
+    });
+    if (noResult) noResult.hidden = shown > 0 || posts.length === 0;
+  }
+
+  kw?.addEventListener('input', () => {
+    query = kw.value.trim().toLowerCase();
+    apply();
+  });
+  langBtns.forEach((b) => {
+    b.addEventListener('click', () => {
+      langBtns.forEach((x) => x.classList.remove('active'));
+      b.classList.add('active');
+      lang = b.dataset.lang || 'all';
+      apply();
+    });
+  });
+  tagBtns.forEach((b) => {
+    b.addEventListener('click', () => {
+      tagBtns.forEach((x) => x.classList.remove('active'));
+      b.classList.add('active');
+      tag = b.dataset.tag || 'all';
+      apply();
+    });
+  });
+</script>
+
+<style>
+  .blog-layout {
+    max-width: 68rem;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 3.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+  /* Divider between the filters and the posts. */
+  .blog-posts {
+    border-top: 1px solid #ececec;
+    padding-top: 1.75rem;
+  }
+  @media (min-width: 900px) {
+    .blog-layout {
+      grid-template-columns: 200px minmax(0, 1fr);
+      gap: 2.75rem;
+    }
+    .blog-filters {
+      position: sticky;
+      top: 88px;
+      align-self: start;
+    }
+    .blog-posts {
+      border-top: 0;
+      padding-top: 0;
+      border-left: 1px solid #ececec;
+      padding-left: 2.75rem;
+    }
+  }
+
+  .filter-group + .filter-group {
+    margin-top: 1.5rem;
+  }
+  .filter-title {
+    margin: 0 0 0.5rem;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #adb5bd;
+    font-weight: 600;
+  }
+  .kw-input {
+    width: 100%;
+    padding: 7px 11px;
+    border: 1px solid #e5e7eb;
+    border-radius: 7px;
+    font-size: 13px;
+    color: var(--color-ink);
+    background: #fafbfc;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .kw-input::placeholder {
+    color: #b8c0c8;
+  }
+  .kw-input:focus {
+    outline: none;
+    border-color: #ced4da;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04);
+  }
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .chip-btn,
+  .tag-btn {
+    border: 0;
+    cursor: pointer;
+    background: #f1f3f5;
+    color: #868e96;
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+  .chip-btn:hover,
+  .tag-btn:hover {
+    background: #e9ecef;
+    color: #6c757d;
+  }
+  .chip-btn.active,
+  .tag-btn.active {
+    background: #ced4da;
+    color: #343a40;
+    font-weight: 600;
+  }
+
+  .post-preview {
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #ececec;
+  }
+  .post-preview:last-of-type {
+    border-bottom: 0;
+  }
+  .post-preview.is-hidden {
+    display: none;
+  }
+  .post-link {
+    display: block;
+    color: var(--color-ink);
+  }
+  .post-title {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 0 0 6px;
+    transition: color 0.2s ease;
+  }
+  @media (min-width: 768px) {
+    .post-title {
+      font-size: 26px;
+    }
+  }
+  .post-link:hover .post-title {
+    color: var(--color-accent);
+  }
+  .post-subtitle {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0 0 8px;
+    color: var(--color-muted);
+  }
+  .post-excerpt {
+    margin: 0;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--color-faint);
+    line-height: 1.6;
+  }
+  .post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--color-muted);
+  }
+  .meta-label {
+    font-weight: 500;
+    margin-right: 4px;
+  }
+  .meta-dot {
+    color: #ccc;
+    margin: 0 4px;
+  }
+  .meta-date {
+    white-space: nowrap;
+  }
+  .empty,
+  .no-result {
+    color: var(--color-muted);
+  }
+</style>

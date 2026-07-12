@@ -1,0 +1,273 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { MarkdownHeading } from 'astro';
+import BaseLayout from './BaseLayout.astro';
+import { SITE } from '../consts';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  headings?: MarkdownHeading[];
+  prev?: CollectionEntry<'blog'>;
+  next?: CollectionEntry<'blog'>;
+}
+
+const { post, headings = [], prev, next } = Astro.props;
+const { title, subtitle, date, tags, headerImg, headerMask = 0.4, catalog } = post.data;
+
+const fmtDate = new Intl.DateTimeFormat('vi-VN', {
+  day: '2-digit',
+  month: '2-digit',
+  year: 'numeric',
+}).format(date);
+
+const toc = catalog ? headings.filter((h) => h.depth === 2 || h.depth === 3) : [];
+---
+
+<BaseLayout title={title} description={subtitle || SITE.description} image={headerImg} article>
+  <header class="post-hero" style={`background-image:url('${headerImg || SITE.defaultHeader}')`}>
+    <div class="post-hero-mask" style={`--mask:${headerMask}`}></div>
+    <div class="post-hero-inner">
+      {
+        tags.length > 0 && (
+          <div class="post-hero-tags">
+            {tags.map((t) => (
+              <a class="hero-tag" href="/blog/">
+                {t}
+              </a>
+            ))}
+          </div>
+        )
+      }
+      <h1 class="post-hero-title">{title}</h1>
+      {subtitle && <p class="post-hero-sub">{subtitle}</p>}
+      <span class="post-hero-meta">{fmtDate}</span>
+    </div>
+  </header>
+
+  <article class:list={['post-shell', { 'has-toc': toc.length > 0 }]}>
+    <div class="post-column">
+      <div class="post-body">
+        <slot />
+      </div>
+
+      {
+        (prev || next) && (
+          <nav class="pager">
+            {prev ? (
+              <a class="pager-link prev" href={`/blog/${prev.id}/`}>
+                <span class="pager-dir">← Bài trước</span>
+                <span class="pager-title">{prev.data.title}</span>
+              </a>
+            ) : (
+              <span />
+            )}
+            {next ? (
+              <a class="pager-link next" href={`/blog/${next.id}/`}>
+                <span class="pager-dir">Bài sau →</span>
+                <span class="pager-title">{next.data.title}</span>
+              </a>
+            ) : (
+              <span />
+            )}
+          </nav>
+        )
+      }
+    </div>
+
+    {
+      toc.length > 0 && (
+        <aside class="post-toc">
+          <p class="toc-title">MỤC LỤC</p>
+          <ul>
+            {toc.map((h) => (
+              <li class:list={[`toc-d${h.depth}`]}>
+                <a href={`#${h.slug}`}>{h.text}</a>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      )
+    }
+  </article>
+</BaseLayout>
+
+<style>
+  .post-hero {
+    position: relative;
+    background-color: #808080;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .post-hero-mask {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, var(--mask, 0.4));
+  }
+  .post-hero-inner {
+    position: relative;
+    max-width: var(--container-content);
+    margin: 0 auto;
+    padding: 8rem 1.25rem 3.5rem;
+    color: #fff;
+  }
+  @media (min-width: 768px) {
+    .post-hero-inner {
+      padding: 10rem 1.25rem 6rem;
+    }
+  }
+  .post-hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 1rem;
+  }
+  .hero-tag {
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 999px;
+    padding: 1px 12px;
+    color: #fff;
+    font-size: 12px;
+    line-height: 22px;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease;
+  }
+  .hero-tag:hover {
+    background: rgba(255, 255, 255, 0.4);
+  }
+  .post-hero-title {
+    margin: 0 0 0.6rem;
+    font-size: 30px;
+    line-height: 1.2;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  }
+  @media (min-width: 768px) {
+    .post-hero-title {
+      font-size: 48px;
+    }
+  }
+  .post-hero-sub {
+    margin: 0 0 1rem;
+    font-weight: 300;
+    font-size: 18px;
+  }
+  @media (min-width: 768px) {
+    .post-hero-sub {
+      font-size: 24px;
+    }
+  }
+  .post-hero-meta {
+    display: block;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 17px;
+    opacity: 0.95;
+  }
+
+  .post-shell {
+    max-width: var(--container-content);
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 1rem;
+  }
+  /* On wide screens, float the TOC to the left of a still-centered column. */
+  @media (min-width: 1200px) {
+    .post-shell.has-toc {
+      max-width: 78rem;
+      display: grid;
+      grid-template-columns: 200px minmax(0, var(--container-content));
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .post-shell.has-toc .post-column {
+      grid-column: 2;
+    }
+    .post-shell.has-toc .post-toc {
+      grid-column: 1;
+      grid-row: 1;
+    }
+  }
+
+  .post-toc {
+    display: none;
+  }
+  @media (min-width: 1200px) {
+    .post-toc {
+      display: block;
+      position: sticky;
+      top: 90px;
+      align-self: start;
+      font-size: 13px;
+    }
+    .toc-title {
+      margin: 0 0 0.5rem;
+      font-weight: 700;
+      color: var(--color-muted);
+      letter-spacing: 0.5px;
+    }
+    .post-toc ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border-left: 1px solid #eee;
+    }
+    .post-toc li a {
+      display: block;
+      padding: 4px 0 4px 12px;
+      color: var(--color-muted);
+      line-height: 1.4;
+      transition: color 0.2s ease;
+    }
+    .post-toc li a:hover {
+      color: var(--color-accent);
+    }
+    .toc-d3 a {
+      padding-left: 24px;
+      font-size: 12px;
+    }
+  }
+
+  .pager {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 3rem 0 1rem;
+  }
+  .pager-link {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 12px 18px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    max-width: 48%;
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease,
+      border-color 0.2s ease;
+  }
+  .pager-link.next {
+    text-align: right;
+    margin-left: auto;
+  }
+  .pager-link:hover {
+    color: #fff;
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+  .pager-dir {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .pager-title {
+    font-size: 14px;
+    color: var(--color-muted);
+  }
+  .pager-link:hover .pager-title {
+    color: rgba(255, 255, 255, 0.9);
+  }
+</style>
