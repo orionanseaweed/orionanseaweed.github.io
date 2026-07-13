@@ -10,8 +10,8 @@
 - id: trekking-2025
   src: /img/gallery/2025-trekking.jpg
   alt: "Trekking Ham Lon Mountain"
-  title: "Trekking Ham Lon Mountain"
-  caption: ""
+  title: "Trekking Hàm Lợn"
+  caption: "Sau một thời gian dài hò hẹn, bọn tôi cuối cùng cũng đã đặt chân lên được Nóc nhà Thủ Đô :)"
   date: "02/2025"
   location: "Núi Hàm Lợn, Sóc Sơn, Hà Nội"
   tags: [trekking, friends]
@@ -28,7 +28,7 @@
   src: /img/gallery/2024-PTPD.jpg
   alt: "Khanh Chi with a cute picture book"
   title: "Khanh Chi with a cute picture book"
-  caption: "We found an adorable picture book while organizing the shelves!"
+  caption: "We found an adorable picture book while organizing the shelves."
   date: "2024"
   location: "D Free Book"
   tags: [books, library]
@@ -53,7 +53,7 @@
   src: /img/gallery/2023-TQB-lib.jpg
   alt: "Ta Quang Buu Library"
   title: "Ta Quang Buu Library"
-  caption: "Thư viện Tạ Quang Bửu, được chụp từ toà C2"
+  caption: "Thư viện Tạ Quang Bửu, được chụp từ toà C2 HUST vào một buổi chiều thí nghiệm Hoá Lý không thể nào mỏi hơn."
   date: "2023"
   location: "Đại học Bách khoa Hà Nội"
   tags: [school, library, HUST]
@@ -70,8 +70,9 @@
 
 - id: cam-sieu-choe-2018
   src: /img/gallery/2018-CSC.jpg
-  alt: "Drawing of the Cam Sieu Choe team"
-  title: "Cam Sieu Choe"
-  caption: "Throwback to our lil' high school online grocery gang! 📦✨"
+  alt: "Drawing of the Sieu Choe"
+  title: "Tùng, Zed & Cam"
+  caption: "Throwback to our lil' high school online grocery gang 📦"
   date: "2018"
+  location: "THPT Yên Thế, Bắc Giang"
   tags: [high school, memories]
